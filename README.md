@@ -19,7 +19,13 @@
 ## Properties
 - `icon`
 - `disabled`
+- `active`
 - `iconSize`, No default value. So, default size of `dw-icon` is used (which is 24px.)
 
+## Custom CSS Properties
 
-## CSS Propertiessdfsd
+```
+--dw-icon-color-active
+--dw-icon-color
+--dw-icon-color-disabled
+```

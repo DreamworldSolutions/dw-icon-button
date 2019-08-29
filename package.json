@@ -1,0 +1,28 @@
+{
+  "name": "@dw/dw-icon-button",
+  "version": "1.0.0-SNAPSHOT",
+  "description": "## Why don't we use `mwc-icon-button`? - We created `dw-icon` to have extended icon set, sepecific to the app. But, those icons we can't be used with  `mwc-icon-button`.  - We found issue with `mwc-icon-button` that it can't be resized easily.",
+  "main": "dw-icon-button.js",
+  "dependencies": {
+    "@dw/dw-icon": "^1.0.0",
+    "@dw/dw-ripple": "^1.0.0",
+    "lit-element": "^2.2.0"
+  },
+  "devDependencies": {
+    "@dw/flex-layout": "^1.0.5",
+    "@webcomponents/webcomponentsjs": "^2.2.10"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DreamworldSolutions/dw-icon-button.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DreamworldSolutions/dw-icon-button/issues"
+  },
+  "homepage": "https://github.com/DreamworldSolutions/dw-icon-button#readme"
+}
