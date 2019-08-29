@@ -26,6 +26,7 @@ export class DWIconButton extends LitElement {
       css`
         :host {
           display: block;
+          box-sizing: border-box;
           cursor: pointer;
         }
         div.button-container {
