@@ -15,8 +15,8 @@ import '@dw/dw-icon/dw-icon.js';
 import '@dw/dw-ripple/dw-ripple.js';
 
 // These are the dw styles element needed by this element.
-import { flexLayout } from '@dw/flex-layout/flex-layout.js';
-import { alignment } from '@dw/flex-layout/flex-layout-alignment.js';
+import { flexLayout } from '@dreamworld/flex-layout/flex-layout.js';
+import { alignment } from '@dreamworld/flex-layout/flex-layout-alignment.js';
 
 export class DWIconButton extends LitElement {
   static get styles() {
