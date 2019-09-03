@@ -11,7 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 import { css, LitElement, html } from 'lit-element';
 
 //These are the dw element needed by this elemenet
-import '@dw/dw-icon/dw-icon.js';
+import '@dreamworld/dw-icon/dw-icon.js';
 import '@dw/dw-ripple/dw-ripple.js';
 
 // These are the dw styles element needed by this element.
