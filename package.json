@@ -5,9 +5,9 @@
   "main": "dw-icon-button.js",
   "dependencies": {
     "@dreamworld/dw-icon": "^1.0.0",
+    "@dreamworld/dw-ripple": "^1.0.0",
     "@dreamworld/flex-layout": "^1.0.0",
-    "@dw/dw-icon": "^1.0.0-SNAPSHOT",
-    "@dw/dw-ripple": "1.0.0-SNAPSHOT",
+    "@material/mwc-icon-button": "^0.7.1",
     "lit-element": "^2.2.0"
   },
   "devDependencies": {

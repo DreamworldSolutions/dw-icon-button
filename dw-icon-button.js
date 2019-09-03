@@ -12,7 +12,7 @@ import { css, LitElement, html } from 'lit-element';
 
 //These are the dw element needed by this elemenet
 import '@dreamworld/dw-icon/dw-icon.js';
-import '@dw/dw-ripple/dw-ripple.js';
+import '@dreamworld/dw-ripple/dw-ripple.js';
 
 // These are the dw styles element needed by this element.
 import { flexLayout } from '@dreamworld/flex-layout/flex-layout.js';
