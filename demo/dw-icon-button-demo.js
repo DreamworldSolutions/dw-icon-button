@@ -36,14 +36,8 @@ export class DwIconButtoDemo extends LitElement {
       css`
         :host {
           display: block;
-        }
-        dw-icon-button {
           --dw-icon-color: rgba(0, 0, 0, 0.6);
-        }
-        .activeIcon {
           --dw-icon-color-active: rgba(0, 0, 0, 0.87);
-        }
-        .disabledIcon {
           --dw-icon-color-disabled: rgba(0, 0, 0, 0.38);
         }
         section div {
@@ -64,12 +58,12 @@ export class DwIconButtoDemo extends LitElement {
 
       <div class="layout vertical center">
         <h4>Active</h4>
-        <dw-icon-button icon="perm_media" active class="activeIcon"></dw-icon-button>
+        <dw-icon-button icon="perm_media" active></dw-icon-button>
       </div>
 
       <div class="layout vertical center">
         <h4>Disabled</h4>
-        <dw-icon-button icon="perm_media" disabled class="disabledIcon"></dw-icon-button>
+        <dw-icon-button icon="perm_media" disabled></dw-icon-button>
       </div>
 
       <div class="layout vertical center">
