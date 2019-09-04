@@ -7,10 +7,12 @@
     "@dreamworld/dw-icon": "^1.0.0",
     "@dreamworld/dw-ripple": "^1.0.0",
     "@dreamworld/flex-layout": "^1.0.0",
-    "@material/mwc-icon-button": "^0.7.1",
     "lit-element": "^2.2.0"
   },
   "devDependencies": {
+    "@dw/material-styles": "^1.0.4-SNAPSHOT",
+    "@material/mwc-switch": "^0.7.1",
+    "@material/mwc-formfield": "^0.7.1",
     "@webcomponents/webcomponentsjs": "^2.2.10",
     "semantic-release": "beta"
   },

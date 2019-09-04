@@ -8,7 +8,7 @@
 
 ## Usage
 ```html
-<dw-icon-button name="" disabled></dw-icon-button>
+<dw-icon-button icon="" disabled></dw-icon-button>
 ```
 
 ### Customize size

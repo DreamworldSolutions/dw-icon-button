@@ -18,7 +18,7 @@ import '@dreamworld/dw-ripple/dw-ripple.js';
 import { flexLayout } from '@dreamworld/flex-layout/flex-layout.js';
 import { alignment } from '@dreamworld/flex-layout/flex-layout-alignment.js';
 
-export class DWIconButton extends LitElement {
+export class DwIconButton extends LitElement {
   static get styles() {
     return [
       flexLayout,
@@ -26,15 +26,25 @@ export class DWIconButton extends LitElement {
       css`
         :host {
           display: block;
-          box-sizing: border-box;
-          cursor: pointer;
         }
         div.button-container {
           width: 100%;
           height: 100%;
         }
         dw-icon {
-          padding: 12px;
+          padding: var(--dw-icon-button-padding, 12px);
+        }
+        button:active dw-icon {
+          --dw-icon-color: var(--dw-icon-color-active, rgba(0, 0, 0, 0.87));
+        }
+        button {
+          background: transparent;
+          border: none;
+          border-radius: 50%;
+          padding: 0px;
+          outline: none;
+          cursor: pointer;
+          overflow: hidden;
         }
       `
     ];
@@ -66,7 +76,7 @@ export class DWIconButton extends LitElement {
 
   render(){
     return html`
-     <div class="layout vertical center-center button-container">
+    <button tabindex="${this.disabled ? -1 : ''}" @click="${this._onClick}">
       <dw-icon 
         .name="${this.icon}" 
         .size=${this.iconSize} 
@@ -74,8 +84,12 @@ export class DWIconButton extends LitElement {
         ?active="${this.active}">
       </dw-icon>
       <dw-ripple unbounded ?disabled="${this.disabled}"></dw-ripple>
-     </div>
+     </button>
     `
+  }
+
+  _onClick() {
+    this.shadowRoot.querySelector('button').blur();
   }
 
   constructor(){
@@ -85,4 +99,4 @@ export class DWIconButton extends LitElement {
   }
 }
 
-window.customElements.define('dw-icon-button', DWIconButton);
+window.customElements.define('dw-icon-button', DwIconButton);

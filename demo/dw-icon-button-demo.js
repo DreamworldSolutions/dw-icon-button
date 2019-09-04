@@ -17,6 +17,11 @@ import '../dw-icon-button.js';
 // These are the dw styles element needed by this element.
 import { flexLayout } from '@dreamworld/flex-layout/flex-layout.js';
 import { alignment } from '@dreamworld/flex-layout/flex-layout-alignment.js';
+import { ThemeStyle } from '@dw/material-styles/theme.js';
+
+//These are the mwc element needed by this elemenet
+import '@material/mwc-switch';
+import '@material/mwc-formfield';
 
 DwIcon.addIcons(
   { 
@@ -33,15 +38,20 @@ export class DwIconButtoDemo extends LitElement {
     return [
       flexLayout,
       alignment,
+      ThemeStyle,
       css`
         :host {
           display: block;
-          --dw-icon-color: rgba(0, 0, 0, 0.6);
-          --dw-icon-color-active: rgba(0, 0, 0, 0.87);
-          --dw-icon-color-disabled: rgba(0, 0, 0, 0.38);
+          color: var(--mdc-theme-text-primary);
+        }
+        section.main {
+          padding: 24px;
         }
         section div {
-          margin: 10px 20px;
+          margin: 0px 20px;
+        }
+        mwc-formfield {
+          --mdc-theme-text-primary-on-background: var(--mdc-theme-text-primary);
         }
       `
     ];
@@ -49,40 +59,49 @@ export class DwIconButtoDemo extends LitElement {
 
   render(){
     return html `
-    <h3> Material Icons </h3>
-    <section class="layout horizontal">
-      <div class="layout vertical center">
-        <h4>Default</h4>
-        <dw-icon-button icon="perm_media"></dw-icon-button>
-      </div>
-
-      <div class="layout vertical center">
-        <h4>Active</h4>
-        <dw-icon-button icon="perm_media" active></dw-icon-button>
-      </div>
-
-      <div class="layout vertical center">
-        <h4>Disabled</h4>
-        <dw-icon-button icon="perm_media" disabled></dw-icon-button>
-      </div>
-
-      <div class="layout vertical center">
-        <h4>size : 48</h4>
-        <dw-icon-button icon="perm_media" iconSize="48"></dw-icon-button>
-      </div>
-    </section>
-    <h3> Custom SVG Icons </h3>
-    <section class="layout horizontal"> 
-      <div class="layout vertical center">
-        <h4>community</h4>
-        <dw-icon-button icon="wellness_community" id="customIcon"></dw-icon-button>
-      </div>
-
-      <div class="layout vertical center">
-        <h4>star(32)</h4>
-        <dw-icon-button icon="star" id="sizeIcon" iconSize="32"></dw-icon-button>
-      </div>
-    </section>
+      <section class="main">
+        <mwc-formfield label="Enable dark theme">
+          <mwc-switch @change="${(e) => {
+            if (e.target.checked) { 
+              this.setAttribute('dark-theme', e.detail);
+              return;
+            }
+            this.removeAttribute('dark-theme');
+            }}">
+          </mwc-switch>
+        </mwc-formfield>
+          
+        <h3> Material Icons </h3>
+        <section class="layout horizontal">
+          <div class="layout vertical center">
+            <h4>Default</h4>
+            <dw-icon-button icon="perm_media"></dw-icon-button>
+          </div>
+          <div class="layout vertical center">
+            <h4>Active</h4>
+            <dw-icon-button icon="perm_media" active></dw-icon-button>
+          </div>
+          <div class="layout vertical center">
+            <h4>Disabled</h4>
+            <dw-icon-button icon="perm_media" disabled></dw-icon-button>
+          </div>
+          <div class="layout vertical center">
+            <h4>size : 48</h4>
+            <dw-icon-button icon="perm_media" iconSize="48"></dw-icon-button>
+          </div>
+        </section>
+        <h3> Custom SVG Icons </h3>
+        <section class="layout horizontal"> 
+          <div class="layout vertical center">
+            <h4>community</h4>
+            <dw-icon-button icon="wellness_community" id="customIcon"></dw-icon-button>
+          </div>
+          <div class="layout vertical center">
+            <h4>star(32)</h4>
+            <dw-icon-button icon="star" id="sizeIcon" iconSize="32"></dw-icon-button>
+          </div>
+        </section>
+      </section>
     `
   }
 }
