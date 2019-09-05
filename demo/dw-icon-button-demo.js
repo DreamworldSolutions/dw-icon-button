@@ -17,7 +17,7 @@ import '../dw-icon-button.js';
 // These are the dw styles element needed by this element.
 import { flexLayout } from '@dreamworld/flex-layout/flex-layout.js';
 import { alignment } from '@dreamworld/flex-layout/flex-layout-alignment.js';
-import { ThemeStyle } from '@dw/material-styles/theme.js';
+import { ThemeStyle } from '@dreamworld/material-styles/theme.js';
 
 //These are the mwc element needed by this elemenet
 import '@material/mwc-switch';
@@ -60,7 +60,7 @@ export class DwIconButtoDemo extends LitElement {
   render(){
     return html `
       <section class="main">
-        <mwc-formfield label="Enable dark theme">
+        <mwc-formfield label="Enable Dark Theme">
           <mwc-switch @change="${(e) => {
             if (e.target.checked) { 
               this.setAttribute('dark-theme', e.detail);

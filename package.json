@@ -10,7 +10,7 @@
     "lit-element": "^2.2.0"
   },
   "devDependencies": {
-    "@dw/material-styles": "^1.0.4-SNAPSHOT",
+    "@dreamworld/material-styles": "^1.1.0",
     "@material/mwc-switch": "^0.7.1",
     "@material/mwc-formfield": "^0.7.1",
     "@webcomponents/webcomponentsjs": "^2.2.10",
