@@ -30,7 +30,7 @@ export class DwIconButton extends LitElement {
         button:focus dw-icon {
           --dw-icon-color: var(--dw-icon-color-active, rgba(0, 0, 0, 0.87));
         }
-        button:hover  {
+        :host(:not([disabled])) button:hover  {
           background-color: rgba(0, 0, 0, 0.04);
         }
         button {
@@ -60,7 +60,7 @@ export class DwIconButton extends LitElement {
       /**
        * `true` if icon needs to be show as a disabled
        */
-      disabled: { type: Boolean },
+      disabled: { type: Boolean, reflect: true },
 
       /**
        * size of icon. default size is 24.
