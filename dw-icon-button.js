@@ -27,24 +27,24 @@ export class DwIconButton extends LitElement {
         :host {
           display: block;
         }
-        div.button-container {
-          width: 100%;
-          height: 100%;
-        }
-        dw-icon {
-          padding: var(--dw-icon-button-padding, 12px);
-        }
         button:focus dw-icon {
           --dw-icon-color: var(--dw-icon-color-active, rgba(0, 0, 0, 0.87));
         }
+        button:hover  {
+          background-color: rgba(0, 0, 0, 0.04);
+        }
         button {
+          width: 100%;
+          height: 100%;
           background: transparent;
           border: none;
-          border-radius: 50%;
           padding: 0px;
           outline: none;
           cursor: pointer;
+          padding: var(--dw-icon-button-padding, 12px);
+          margin: 0px;
           overflow: hidden;
+          border-radius: 50%;
         }
       `
     ];
@@ -76,7 +76,7 @@ export class DwIconButton extends LitElement {
 
   render(){
     return html`
-    <button tabindex="${this.disabled ? -1 : ''}" @click="${this._onClick}">
+    <button tabindex="${this.disabled ? -1 : ''}" @click="${this._onClick}" class="center-center layout vertical">
       <dw-icon 
         .name="${this.icon}" 
         .size=${this.iconSize} 
