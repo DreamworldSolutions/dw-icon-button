@@ -89,7 +89,12 @@ export class DwIconButton extends LitElement {
   }
 
   _onClick() {
-    this.shadowRoot.querySelector('button').blur();
+    /**
+    * call blur method to fix ripple effect after icon click.
+    */
+    setTimeout(() => {
+      this.shadowRoot.querySelector('button').blur();
+    }, 350);
   }
 
   constructor(){
