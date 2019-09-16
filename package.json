@@ -11,10 +11,14 @@
   },
   "devDependencies": {
     "@dreamworld/material-styles": "^1.1.0",
-    "@material/mwc-switch": "^0.7.1",
     "@material/mwc-formfield": "^0.7.1",
+    "@material/mwc-switch": "^0.7.1",
     "@webcomponents/webcomponentsjs": "^2.2.10",
     "semantic-release": "beta"
+  },
+  "resolutions": {
+    "@material/mwc-base": "0.7.0",
+    "@material/base": "3.1.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
