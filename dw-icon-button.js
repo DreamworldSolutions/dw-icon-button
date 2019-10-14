@@ -33,6 +33,9 @@ export class DwIconButton extends LitElement {
         :host(:not([disabled])) button:hover  {
           background-color: rgba(0, 0, 0, 0.04);
         }
+        :host([disabled]) button {
+          cursor: default;
+        }
         button {
           width: 100%;
           height: 100%;
