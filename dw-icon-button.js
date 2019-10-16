@@ -89,6 +89,9 @@ export class DwIconButton extends LitElement {
   }
 
   _onClick() {
+
+    //Call focus method show ripple effect in iPhone.
+    this.shadowRoot.querySelector('button').focus();
     /**
     * call blur method to fix ripple effect after icon click.
     */

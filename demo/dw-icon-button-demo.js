@@ -72,7 +72,7 @@ export class DwIconButtoDemo extends LitElement {
         </mwc-formfield>
           
         <h3> Material Icons </h3>
-        <section class="layout horizontal">
+        <section class="layout horizontal wrap">
           <div class="layout vertical center">
             <h4>Default</h4>
             <dw-icon-button icon="perm_media"></dw-icon-button>
@@ -91,7 +91,7 @@ export class DwIconButtoDemo extends LitElement {
           </div>
         </section>
         <h3> Custom SVG Icons </h3>
-        <section class="layout horizontal"> 
+        <section class="layout horizontal wrap"> 
           <div class="layout vertical center">
             <h4>community</h4>
             <dw-icon-button icon="wellness_community" id="customIcon"></dw-icon-button>
