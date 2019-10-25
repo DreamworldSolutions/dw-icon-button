@@ -79,17 +79,17 @@ export class DwIconButton extends LitElement {
     }
   }
 
-  render(){
+  render() {
     return html`
-    <button style=${this.buttonSize ? styleMap({ width: this.buttonSize + 'px', height: this.buttonSize + 'px'}) : ''} tabindex="${this.disabled ? -1 : ''}" @click="${this._onClick}" class="center-center layout vertical">
-      <dw-icon 
-        .name="${this.icon}" 
-        .size=${this.iconSize} 
-        ?disabled="${this.disabled}"
-        ?active="${this.active}">
-      </dw-icon>
-      <dw-ripple unbounded ?disabled="${this.disabled}"></dw-ripple>
-     </button>
+      <button style=${this.buttonSize ? styleMap({ width: this.buttonSize + 'px', height: this.buttonSize + 'px' }) : ''} tabindex="${this.disabled ? -1 : ''}" @click="${this._onClick}" class="center-center layout vertical">
+        <dw-icon 
+          .name="${this.icon}" 
+          .size=${this.iconSize} 
+          ?disabled="${this.disabled}"
+          ?active="${this.active}">
+        </dw-icon>
+        <dw-ripple unbounded ?disabled="${this.disabled}"></dw-ripple>
+      </button>
     `
   }
 
@@ -102,7 +102,7 @@ export class DwIconButton extends LitElement {
     }, 350);
   }
 
-  constructor(){
+  constructor() {
     super();
     this.disabled = false;
     this.active = false;
