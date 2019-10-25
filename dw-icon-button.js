@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 */
 
 import { css, LitElement, html } from 'lit-element';
+import { styleMap } from 'lit-html/directives/style-map';
 
 //These are the dw element needed by this elemenet
 import '@dreamworld/dw-icon/dw-icon.js';
@@ -41,7 +42,6 @@ export class DwIconButton extends LitElement {
           height: 100%;
           background: transparent;
           border: none;
-          padding: 0px;
           outline: none;
           cursor: pointer;
           padding: var(--dw-icon-button-padding, 12px);
@@ -73,13 +73,18 @@ export class DwIconButton extends LitElement {
       /**
        * `true` if icon needs to be show as active
        */
-      active: { type: Boolean }
+      active: { type: Boolean },
+
+      /**
+       *  No default value. So, default icon container size is it's parent height and width. If buttonSize is exists then icon container size base on `buttonSize` property.
+       */
+      buttonSize: { type: Number }
     }
   }
 
   render(){
     return html`
-    <button tabindex="${this.disabled ? -1 : ''}" @click="${this._onClick}" class="center-center layout vertical">
+    <button style=${this.buttonSize ? styleMap({ width: this.buttonSize + 'px', height: this.buttonSize + 'px'}) : ''} tabindex="${this.disabled ? -1 : ''}" @click="${this._onClick}" class="center-center layout vertical">
       <dw-icon 
         .name="${this.icon}" 
         .size=${this.iconSize} 
