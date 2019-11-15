@@ -28,6 +28,9 @@ export class DwIconButton extends LitElement {
         :host {
           display: block;
         }
+        :host([hidden]) {
+          display: none;
+        }
         button:focus dw-icon {
           --dw-icon-color: var(--dw-icon-color-active, rgba(0, 0, 0, 0.87));
         }
