@@ -41,6 +41,7 @@ export class DwIconButton extends LitElement {
           cursor: default;
         }
         button {
+          position: relative;
           width: 100%;
           height: 100%;
           background: transparent;
@@ -87,7 +88,7 @@ export class DwIconButton extends LitElement {
 
   render() {
     return html`
-      <button style=${this.buttonSize ? styleMap({ width: this.buttonSize + 'px', height: this.buttonSize + 'px' }) : ''} tabindex="${this.disabled ? -1 : ''}" @click="${this._onClick}" class="center-center layout vertical">
+      <button style=${this._buttonStyle()} tabindex="${this.disabled ? -1 : ''}" @click="${this._onClick}" class="center-center layout vertical">
         <dw-icon 
           .name="${this.icon}" 
           .size=${this.iconSize} 
@@ -97,6 +98,20 @@ export class DwIconButton extends LitElement {
         <dw-ripple unbounded ?disabled="${this.disabled}"></dw-ripple>
       </button>
     `
+  }
+
+  /**
+   * When `buttonSize` is defined then return button `width`, `height` and `padding`.
+   * @returns {*} Button style based on `buttonSize` and `iconSize` property.
+   * @protected
+   */
+  _buttonStyle() {
+    if(!this.buttonSize) {
+      return '';
+    }
+    
+    let padding = (this.buttonSize - (this.iconSize || 24)) / 2;
+    return styleMap({ width: this.buttonSize + 'px', height: this.buttonSize + 'px', padding: padding + 'px'});
   }
 
   _onClick() {
