@@ -34,9 +34,11 @@ export class DwIconButton extends LitElement {
         button:focus dw-icon {
           --dw-icon-color: var(--dw-icon-color-active, rgba(0, 0, 0, 0.87));
         }
-        :host(:not([disabled])) button:hover  {
+
+        :host(:not([disabled]:not([touch-device]))) button:hover  {
           background-color: rgba(0, 0, 0, 0.04);
         }
+        
         :host([disabled]) button {
           cursor: default;
         }
@@ -82,13 +84,23 @@ export class DwIconButton extends LitElement {
       /**
        *  No default value. So, default icon container size is it's parent height and width. If buttonSize is exists then icon container size base on `buttonSize` property.
        */
-      buttonSize: { type: Number }
+      buttonSize: { type: Number },
+
+      /**
+       * Input property.
+       * When it is `true` don't apply hover effect.
+       */
+      touchDevice: {type: Boolean, reflect: true, attribute: 'touch-device'}
     }
   }
 
   render() {
     return html`
-      <button style=${this._buttonStyle()} tabindex="${this.disabled ? -1 : ''}" @click="${this._onClick}" class="center-center layout vertical">
+      <button style=${this._buttonStyle()} 
+        tabindex="${this.disabled ? -1 : ''}" 
+        @touchstart="${this._onClick}" 
+        @mousedown="${this._onClick}" 
+        class="center-center layout vertical">
         <dw-icon 
           .name="${this.icon}" 
           .size=${this.iconSize} 
