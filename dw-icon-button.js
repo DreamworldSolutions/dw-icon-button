@@ -14,6 +14,7 @@ import { styleMap } from 'lit-html/directives/style-map';
 //These are the dw element needed by this elemenet
 import '@dreamworld/dw-icon/dw-icon.js';
 import '@dreamworld/dw-ripple/dw-ripple.js';
+import { isTouchDevice } from '@dreamworld/web-util/isTouchDevice';
 
 // These are the dw styles element needed by this element.
 import { flexLayout } from '@dreamworld/flex-layout/flex-layout.js';
@@ -34,9 +35,11 @@ export class DwIconButton extends LitElement {
         button:focus dw-icon {
           --dw-icon-color: var(--dw-icon-color-active, rgba(0, 0, 0, 0.87));
         }
-        :host(:not([disabled])) button:hover  {
+
+        :host(:not([disabled]:not([touch-device]))) button:hover  {
           background-color: rgba(0, 0, 0, 0.04);
         }
+
         :host([disabled]) button {
           cursor: default;
         }
@@ -82,13 +85,22 @@ export class DwIconButton extends LitElement {
       /**
        *  No default value. So, default icon container size is it's parent height and width. If buttonSize is exists then icon container size base on `buttonSize` property.
        */
-      buttonSize: { type: Number }
+      buttonSize: { type: Number },
+
+      /**
+       * When it is `true` don't apply hover effect.
+       */
+      _touchDevice: {type: Boolean, reflect: true, attribute: 'touch-device'}
     }
   }
 
   render() {
     return html`
-      <button style=${this._buttonStyle()} tabindex="${this.disabled ? -1 : ''}" @click="${this._onClick}" class="center-center layout vertical">
+      <button style=${this._buttonStyle()} 
+        tabindex="${this.disabled ? -1 : ''}" 
+        @touchstart="${this._onClick}" 
+        @mousedown="${this._onClick}" 
+        class="center-center layout vertical">
         <dw-icon 
           .name="${this.icon}" 
           .size=${this.iconSize} 
@@ -127,6 +139,7 @@ export class DwIconButton extends LitElement {
     super();
     this.disabled = false;
     this.active = false;
+    this._touchDevice = isTouchDevice();
   }
 }
 
