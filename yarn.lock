@@ -49,6 +49,11 @@
     "@polymer/font-roboto" "^3.0.2"
     lit-element "^2.2.0"
 
+"@dreamworld/web-util@detect-touch-device":
+  version "1.1.0-detect-touch-device.1"
+  resolved "https://registry.yarnpkg.com/@dreamworld/web-util/-/web-util-1.1.0-detect-touch-device.1.tgz#d258b8e0673e89ddfc27e13f2bed3449d482d11a"
+  integrity sha512-OYr3OXmT0MyOZeDEM8f1T7eh/hf7mc0L/6HPRc/RT70tRQxbcFVp2TH9a5CF0FO5pkcdqoIVajMnQcPUr8snrQ==
+
 "@material/animation@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@material/animation/-/animation-3.1.0.tgz#ab04e7c2e92ab370a2b28d12af1b88538d23014f"
