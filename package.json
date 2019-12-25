@@ -7,11 +7,11 @@
     "@dreamworld/dw-icon": "^1.0.0",
     "@dreamworld/dw-ripple": "^1.0.0",
     "@dreamworld/flex-layout": "^1.0.0",
+    "@dreamworld/web-util": "^1.2.0",
     "lit-element": "^2.2.0"
   },
   "devDependencies": {
     "@dreamworld/material-styles": "^1.1.0",
-    "@dreamworld/web-util": "^1.2.0",
     "@material/mwc-formfield": "^0.7.1",
     "@material/mwc-switch": "^0.7.1",
     "@webcomponents/webcomponentsjs": "^2.2.10",
