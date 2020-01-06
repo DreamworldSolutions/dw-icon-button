@@ -15,12 +15,13 @@ import { styleMap } from 'lit-html/directives/style-map';
 import '@dreamworld/dw-icon/dw-icon.js';
 import '@dreamworld/dw-ripple/dw-ripple.js';
 import { isTouchDevice } from '@dreamworld/web-util/isTouchDevice';
+import { buttonFocus } from '@dreamworld/pwa-helpers';
 
 // These are the dw styles element needed by this element.
 import { flexLayout } from '@dreamworld/flex-layout/flex-layout.js';
 import { alignment } from '@dreamworld/flex-layout/flex-layout-alignment.js';
 
-export class DwIconButton extends LitElement {
+export class DwIconButton extends buttonFocus(LitElement) {
   static get styles() {
     return [
       flexLayout,
