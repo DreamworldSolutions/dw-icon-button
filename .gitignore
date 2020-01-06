@@ -3,3 +3,5 @@
 /.history/
 /.idea/
 
+/.settings/
+/package-lock.json
