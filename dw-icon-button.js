@@ -29,6 +29,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
       css`
         :host {
           display: block;
+          outline: none;
         }
         :host([hidden]) {
           display: none; 
