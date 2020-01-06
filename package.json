@@ -7,6 +7,7 @@
     "@dreamworld/dw-icon": "^1.0.0",
     "@dreamworld/dw-ripple": "^1.0.0",
     "@dreamworld/flex-layout": "^1.0.0",
+    "@dreamworld/pwa-helpers": "^1.0.0",
     "@dreamworld/web-util": "^1.2.0",
     "lit-element": "^2.2.0"
   },
