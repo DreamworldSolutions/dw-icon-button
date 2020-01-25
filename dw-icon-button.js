@@ -35,7 +35,7 @@ export class DwIconButton extends LitElement {
           --dw-icon-color: var(--dw-icon-color-active, rgba(0, 0, 0, 0.87));
         }
 
-        :host(:not([disabled]:not([touch-device]))) button:hover  {
+        :host(:not([disabled]):not([touch-device])) button:hover  {
           background-color: rgba(0, 0, 0, 0.04);
         }
 
