@@ -13,6 +13,7 @@ import { styleMap } from 'lit-html/directives/style-map';
 
 //These are the dw element needed by this elemenet
 import '@dreamworld/dw-icon/dw-icon.js';
+import '@dreamworld/dw-ripple/dw-ripple.js';
 import { isTouchDevice } from '@dreamworld/web-util/isTouchDevice';
 
 // These are the dw styles element needed by this element.
@@ -106,6 +107,7 @@ export class DwIconButton extends LitElement {
           ?disabled="${this.disabled}"
           ?active="${this.active}">
         </dw-icon>
+        <dw-ripple unbounded ?disabled="${this.disabled}"></dw-ripple>
       </button>
     `
   }
