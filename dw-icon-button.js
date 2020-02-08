@@ -31,6 +31,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
           display: block;
           outline: none;
         }
+        
         :host([hidden]) {
           display: none; 
         }
@@ -50,6 +51,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
         :host([disabled]) button {
           cursor: default;
         }
+
         button {
           position: relative;
           width: 100%;
