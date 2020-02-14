@@ -31,9 +31,15 @@ export class DwIconButton extends buttonFocus(LitElement) {
           display: block;
           outline: none;
         }
+        
         :host([hidden]) {
           display: none; 
         }
+
+        :host([disabled]){
+          pointer-events: none;
+        } 
+
         button:focus dw-icon {
           --dw-icon-color: var(--dw-icon-color-active, rgba(0, 0, 0, 0.87));
         }
@@ -45,6 +51,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
         :host([disabled]) button {
           cursor: default;
         }
+
         button {
           position: relative;
           width: 100%;
