@@ -51,6 +51,10 @@ export class DwIconButton extends buttonFocus(LitElement) {
           cursor: default;
         }
 
+        :host[test] {
+          background-color: red;
+        }
+
         button {
           position: relative;
           width: 100%;
