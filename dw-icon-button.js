@@ -70,6 +70,11 @@ export class DwIconButton extends buttonFocus(LitElement) {
           overflow: hidden;
           border-radius: 50%;
         }
+        
+        /* ripple color shows is to light so change a opcity to color. */
+        dw-ripple {
+          opacity: 1;
+        }
       `
     ];
   }
@@ -92,11 +97,6 @@ export class DwIconButton extends buttonFocus(LitElement) {
       iconSize: { type: Number },
 
       /**
-       * `true` if icon needs to be show as active
-       */
-      active: { type: Boolean },
-
-      /**
        *  No default value. So, default icon container size is it's parent height and width. If buttonSize is exists then icon container size base on `buttonSize` property.
        */
       buttonSize: { type: Number },
@@ -112,14 +112,11 @@ export class DwIconButton extends buttonFocus(LitElement) {
     return html`
       <button style=${this._buttonStyle()} 
         tabindex="${this.disabled ? -1 : ''}" 
-        @touchstart="${this._onClick}" 
-        @mousedown="${this._onClick}" 
         class="center-center layout vertical">
         <dw-icon 
           .name="${this.icon}" 
           .size=${this.iconSize} 
-          ?disabled="${this.disabled}"
-          ?active="${this.active}">
+          ?disabled="${this.disabled}"></dw-icon>
         </dw-icon>
         <dw-ripple unbounded ?disabled="${this.disabled}"></dw-ripple>
       </button>
@@ -140,19 +137,9 @@ export class DwIconButton extends buttonFocus(LitElement) {
     return styleMap({ width: this.buttonSize + 'px', height: this.buttonSize + 'px', padding: padding + 'px'});
   }
 
-  _onClick() {
-    /**
-    * call blur method to fix ripple effect after icon click.
-    */
-    setTimeout(() => {
-      this.shadowRoot.querySelector('button').blur();
-    }, 350);
-  }
-
   constructor() {
     super();
     this.disabled = false;
-    this.active = false;
     this._touchDevice = isTouchDevice();
   }
 }
