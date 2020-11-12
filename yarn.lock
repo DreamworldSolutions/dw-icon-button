@@ -31,10 +31,10 @@
     "@material/mwc-icon" "^0.6.0"
     lit-element "^2.2.0"
 
-"@dreamworld/dw-ripple@^1.3.0-remove-mwc-ripple.1":
-  version "1.3.0-remove-mwc-ripple.1"
-  resolved "https://registry.yarnpkg.com/@dreamworld/dw-ripple/-/dw-ripple-1.3.0-remove-mwc-ripple.1.tgz#6335c3c44723c7f723c88cc4d645f170ae1a9148"
-  integrity sha512-/CUKkcbs92TtDK/qIAkXaSMVScLWRX9ZIUnhGcOtJo4G5eHLkGMGXMlhC/0Zpl3JVUrwP0hTj7rMzuE8icoqBg==
+"@dreamworld/dw-ripple@^1.3.0-remove-mwc-ripple.2":
+  version "1.3.0-remove-mwc-ripple.2"
+  resolved "https://registry.yarnpkg.com/@dreamworld/dw-ripple/-/dw-ripple-1.3.0-remove-mwc-ripple.2.tgz#9310575114e48f6c3d8c55e5b81b1ef4d9770825"
+  integrity sha512-wbHq/meH4R080qH46gPiBKUzyeRuAftoT8WIGi3Pv4cBpJPNF0TXUO1xu5I6YrsgEFzzlXzSlB2G8HzCFr2yww==
   dependencies:
     "@dreamworld/pwa-helpers" "^1.10.0"
     lit-element "^2.2.0"
@@ -54,7 +54,7 @@
     "@polymer/font-roboto" "^3.0.2"
     lit-element "^2.2.0"
 
-"@dreamworld/pwa-helpers@^1.10.0":
+"@dreamworld/pwa-helpers@1.10.0", "@dreamworld/pwa-helpers@^1.10.0":
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/@dreamworld/pwa-helpers/-/pwa-helpers-1.10.0.tgz#acae0fd237bebbbd42869f6c7fbb2b6ea8232a18"
   integrity sha512-ixhvpT7oc5Cnn2NRykSfGKOs/y3j2qvtsPKkFgbwx4KFS2StT4lkOrxJSnIn5cTi69ib4oIegeNzcVxzMFWnSw==
