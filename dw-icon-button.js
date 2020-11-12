@@ -112,8 +112,6 @@ export class DwIconButton extends buttonFocus(LitElement) {
     return html`
       <button style=${this._buttonStyle()} 
         tabindex="${this.disabled ? -1 : ''}" 
-        @touchstart="${this._onClick}" 
-        @mousedown="${this._onClick}" 
         class="center-center layout vertical">
         <dw-icon 
           .name="${this.icon}" 
@@ -138,15 +136,6 @@ export class DwIconButton extends buttonFocus(LitElement) {
     
     let padding = (this.buttonSize - (this.iconSize || 24)) / 2;
     return styleMap({ width: this.buttonSize + 'px', height: this.buttonSize + 'px', padding: padding + 'px'});
-  }
-
-  _onClick() {
-    /**
-    * call blur method to fix ripple effect after icon click.
-    */
-    setTimeout(() => {
-      this.shadowRoot.querySelector('button').blur();
-    }, 350);
   }
 
   constructor() {
