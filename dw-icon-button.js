@@ -92,11 +92,6 @@ export class DwIconButton extends buttonFocus(LitElement) {
       iconSize: { type: Number },
 
       /**
-       * `true` if icon needs to be show as active
-       */
-      active: { type: Boolean },
-
-      /**
        *  No default value. So, default icon container size is it's parent height and width. If buttonSize is exists then icon container size base on `buttonSize` property.
        */
       buttonSize: { type: Number },
@@ -116,8 +111,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
         <dw-icon 
           .name="${this.icon}" 
           .size=${this.iconSize} 
-          ?disabled="${this.disabled}"
-          ?active="${this.active}">
+          ?disabled="${this.disabled}"></dw-icon>
         </dw-icon>
         <dw-ripple unbounded ?disabled="${this.disabled}"></dw-ripple>
       </button>
@@ -141,7 +135,6 @@ export class DwIconButton extends buttonFocus(LitElement) {
   constructor() {
     super();
     this.disabled = false;
-    this.active = false;
     this._touchDevice = isTouchDevice();
   }
 }
