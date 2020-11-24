@@ -70,6 +70,10 @@ export class DwIconButton extends buttonFocus(LitElement) {
           overflow: hidden;
           border-radius: 50%;
         }
+
+        dw-ripple {
+          opacity: 1;
+        }
       `
     ];
   }
