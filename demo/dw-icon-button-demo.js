@@ -79,8 +79,12 @@ export class DwIconButtoDemo extends LitElement {
             <dw-icon-button icon="perm_media"></dw-icon-button>
           </div>
           <div class="layout vertical center">
-            <h4>Active</h4>
-            <dw-icon-button icon="perm_media" active></dw-icon-button>
+            <h4>Primary</h4>
+            <dw-icon-button icon="perm_media" primary></dw-icon-button>
+          </div>
+          <div class="layout vertical center">
+            <h4>Secondary</h4>
+            <dw-icon-button icon="perm_media" secondary></dw-icon-button>
           </div>
           <div class="layout vertical center">
             <h4>Disabled</h4>

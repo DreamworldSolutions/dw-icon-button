@@ -41,6 +41,16 @@ export class DwIconButton extends buttonFocus(LitElement) {
           pointer-events: none;
         } 
 
+        :host([primary]) {
+          --dw-icon-color: var(--mdc-theme-primary);
+          --dw-icon-color-active: var(--mdc-theme-primary);
+        }
+
+        :host([secondary]) {
+          --dw-icon-color: var(--mdc-theme-secondary);
+          --dw-icon-color-active: var(--mdc-theme-secondary);
+        }
+
         button:focus dw-icon {
           --dw-icon-color: var(--dw-icon-color-active, rgba(0, 0, 0, 0.87));
         }
@@ -92,14 +102,19 @@ export class DwIconButton extends buttonFocus(LitElement) {
       iconSize: { type: Number },
 
       /**
-       * `true` if icon needs to be show as active
-       */
-      active: { type: Boolean },
-
-      /**
        *  No default value. So, default icon container size is it's parent height and width. If buttonSize is exists then icon container size base on `buttonSize` property.
        */
       buttonSize: { type: Number },
+
+      /**
+       * Set to `true` when icon is to be shown in primary color.
+       */
+      primary: { type: Boolean, reflect: true },
+
+      /**
+       * Set to `true` when icon is to be shown in secondary color.
+       */
+      secondary: { type: Boolean, reflect: true },
 
       /**
        * When it is `true` don't apply hover effect.
@@ -118,10 +133,9 @@ export class DwIconButton extends buttonFocus(LitElement) {
         <dw-icon 
           .name="${this.icon}" 
           .size=${this.iconSize} 
-          ?disabled="${this.disabled}"
-          ?active="${this.active}">
+          ?disabled="${this.disabled}"></dw-icon>
         </dw-icon>
-        <dw-ripple unbounded ?disabled="${this.disabled}"></dw-ripple>
+        <dw-ripple .primary=${this.primary} .secondary=${this.secondary} unbounded ?disabled="${this.disabled}"></dw-ripple>
       </button>
     `
   }
@@ -140,6 +154,12 @@ export class DwIconButton extends buttonFocus(LitElement) {
     return styleMap({ width: this.buttonSize + 'px', height: this.buttonSize + 'px', padding: padding + 'px'});
   }
 
+  constructor() {
+    super();
+    this.disabled = false;
+    this._touchDevice = isTouchDevice();
+  }
+
   _onClick() {
     /**
     * call blur method to fix ripple effect after icon click.
@@ -147,13 +167,6 @@ export class DwIconButton extends buttonFocus(LitElement) {
     setTimeout(() => {
       this.shadowRoot.querySelector('button').blur();
     }, 350);
-  }
-
-  constructor() {
-    super();
-    this.disabled = false;
-    this.active = false;
-    this._touchDevice = isTouchDevice();
   }
 }
 
