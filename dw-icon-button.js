@@ -14,7 +14,6 @@ import { styleMap } from 'lit-html/directives/style-map';
 
 //These are the dw element needed by this elemenet
 import '@dreamworld/dw-icon/dw-icon.js';
-import '@dreamworld/dw-ripple/dw-ripple.js';
 import { isTouchDevice } from '@dreamworld/web-util/isTouchDevice';
 import { buttonFocus } from '@dreamworld/pwa-helpers';
 
@@ -55,16 +54,8 @@ export class DwIconButton extends buttonFocus(LitElement) {
           --dw-icon-color: var(--dw-icon-color-active, rgba(0, 0, 0, 0.87));
         }
 
-        :host(:not([disabled]):not([touch-device])) button:hover  {
-          background-color: rgba(0, 0, 0, 0.04);
-        }
-
         :host([disabled]) button {
           cursor: default;
-        }
-
-        :host[test] {
-          background-color: red;
         }
 
         button {
@@ -79,6 +70,84 @@ export class DwIconButton extends buttonFocus(LitElement) {
           margin: 0px;
           overflow: hidden;
           border-radius: 50%;
+        }
+
+        button::before  {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: var(--mdc-theme-on-surface);
+          transition: opacity 150ms;
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        :host(:not([disabled]):not([touch-device])) button:hover::before {
+          opacity: 0.04;
+        }
+
+        button:focus::before {
+          opacity: 0.12;
+        }
+
+        :host(:not([disabled]):not([touch-device])) button:focus:hover::before {
+          opacity: 0.16;
+        }
+
+        button::after {
+          content: '';
+          display: block;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background-color: var(--mdc-theme-on-surface);
+          pointer-events: none;
+          opacity: 0;
+          border-radius: 50%;
+        }
+
+        @keyframes scale-in-ripple {
+          from {
+            animation-timing-function:cubic-bezier(0.4, 0, 0.2, 1);
+            transform: scale(0.6);}
+          to {transform: scale(1);}
+        }
+
+        @keyframes fade-in-ripple {
+          from {opacity: 0;}
+          to {opacity: 0.12;}
+        }
+
+        @keyframes fade-out-ripple {
+          from {opacity: 0.12;}
+          to {opacity: 0;}
+        }
+
+        :host([disabled]) button::before, :host([disabled]) button::after {
+          background-color: transparent;
+        }
+
+
+        :host([primary]) button::before, :host([primary]) button::after {
+          background-color: var(--mdc-theme-primary);
+        }
+        :host([secondary]) button::before, :host([secondary]) button::after {
+          background-color: var(--mdc-theme-secondary);
+        }
+
+        :host(.ripple-entry) button::after {
+          animation: scale-in-ripple 225ms forwards, fade-in-ripple 75ms forwards;
+        }
+
+        :host(.ripple-exit) button::after {
+          transform: scale(1);
+          animation: fade-out-ripple 250ms forwards;
         }
       `
     ];
@@ -123,6 +192,24 @@ export class DwIconButton extends buttonFocus(LitElement) {
     }
   }
 
+  connectedCallback() {
+    super.connectedCallback && super.connectedCallback();
+    /**
+     * It's data-type is Promise. Default value is the Promise which is resolved immediately.
+     * Later on, it's value will be changed when entry animation is started (__scale).
+     * And when entry animation is completed, that promise gets resolved.
+     */
+    this.__waitForEntryAnimation = new Promise( (resolve) => {resolve()});
+    this.__bindActiveEvents();
+    this.__bindInactiveEvents();
+  }
+
+  disconnectedCallback() {
+    this.__unbindActiveEvents();
+    this.__unbindInactiveEvents();
+    super.disconnectedCallback && super.disconnectedCallback();
+  }
+
   render() {
     return html`
       <button style=${this._buttonStyle()} 
@@ -135,7 +222,6 @@ export class DwIconButton extends buttonFocus(LitElement) {
           .size=${this.iconSize} 
           ?disabled="${this.disabled}"></dw-icon>
         </dw-icon>
-        <dw-ripple .primary=${this.primary} .secondary=${this.secondary} unbounded ?disabled="${this.disabled}"></dw-ripple>
       </button>
     `
   }
@@ -160,13 +246,84 @@ export class DwIconButton extends buttonFocus(LitElement) {
     this._touchDevice = isTouchDevice();
   }
 
-  _onClick() {
+  async _onClick() {
+    await this.__waitForEntryAnimation;
     /**
     * call blur method to fix ripple effect after icon click.
     */
     setTimeout(() => {
       this.shadowRoot.querySelector('button').blur();
-    }, 350);
+    }, 0);
+  }
+  
+  /**
+   * Bind active ripple events.
+   * @private
+   */
+  __bindActiveEvents() {
+    this.addEventListener('mousedown', this.__onStart, {passive: true});
+    this.addEventListener('touchstart', this.__onStart, {passive: true});
+  }
+
+  /**
+   * unbind active ripple events.
+   * @private
+   */
+  __unbindActiveEvents() {
+    this.removeEventListener('mousedown', this.__onStart, {passive: true});
+    this.removeEventListener('touchstart', this.__onStart, {passive: true});
+  }
+
+  /**
+   * Bind remove/in-active ripple events.
+   * @private
+   */
+  __bindInactiveEvents() {
+    this.addEventListener('mouseup', this.__fadeOut, {passive: true});
+    this.addEventListener('touchend', this.__fadeOut, {passive: true});
+  }
+
+  /**
+   * unbind remove/in-active ripple events.
+   * @private
+   */
+  __unbindInactiveEvents() {
+    this.removeEventListener('mouseup', this.__fadeOut, {passive: true});
+    this.removeEventListener('mouseleave', this.__fadeOut, {passive: true});
+    this.removeEventListener('touchend', this.__fadeOut , {passive: true});
+  }
+
+  /**
+   * Invoked on ripple active events.
+   * Active a ripple animation.
+   * @private
+   */
+  __onStart() {
+    let resolve, reject;
+    let promise = new Promise((res, rej) => { resolve = res, reject = rej; });
+    this.__waitForEntryAnimation = promise;
+    window.requestAnimationFrame(() => {
+      this.classList.add('ripple-entry');
+      window.setTimeout(() => {
+        resolve();
+      }, 225);
+    });
+  }
+
+  /**
+   * Fade out a current active ripple.
+   * Waits till the scale animation is completed, and then performs the fadeout animation
+   * @private
+   */
+  async __fadeOut() {
+    await this.__waitForEntryAnimation;
+    window.requestAnimationFrame(() => {
+      this.classList.add('ripple-exit');
+      window.setTimeout(()=> {
+        this.classList.remove('ripple-entry');
+        this.classList.remove('ripple-exit');
+      }, 250);
+    });
   }
 }
 
