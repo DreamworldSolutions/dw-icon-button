@@ -214,8 +214,8 @@ export class DwIconButton extends buttonFocus(LitElement) {
     return html`
       <button style=${this._buttonStyle()} 
         tabindex="${this.disabled ? -1 : ''}" 
-        @touchstart="${this._onClick}" 
-        @mousedown="${this._onClick}" 
+        @touchend="${this._onClick}" 
+        @mouseup="${this._onClick}" 
         class="center-center layout vertical">
         <dw-icon 
           .name="${this.icon}" 
