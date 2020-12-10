@@ -252,7 +252,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
     * call blur method to fix ripple effect after icon click.
     */
     setTimeout(() => {
-      this.shadowRoot.querySelector('button').blur();
+      // this.shadowRoot.querySelector('button').blur();
     }, 0);
   }
   
