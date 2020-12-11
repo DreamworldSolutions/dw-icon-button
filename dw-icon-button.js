@@ -196,10 +196,10 @@ export class DwIconButton extends buttonFocus(LitElement) {
     super.connectedCallback && super.connectedCallback();
     /**
      * It's data-type is Promise. Default value is the Promise which is resolved immediately.
-     * Later on, it's value will be changed when entry animation is started (__scale).
+     * Later on, it's value will be changed when entry animation is started (__onStart).
      * And when entry animation is completed, that promise gets resolved.
      */
-    this.__waitForEntryAnimation = new Promise( (resolve) => {resolve()});
+    this.waitForEntryAnimation = new Promise( (resolve) => {resolve()});
     this.__bindActiveEvents();
     this.__bindInactiveEvents();
   }
@@ -247,7 +247,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
   }
 
   async _onClick() {
-    await this.__waitForEntryAnimation;
+    await this.waitForEntryAnimation;
     /**
     * call blur method to fix ripple effect after icon click.
     */
@@ -299,9 +299,9 @@ export class DwIconButton extends buttonFocus(LitElement) {
    * @private
    */
   __onStart() {
-    let resolve, reject;
-    let promise = new Promise((res, rej) => { resolve = res, reject = rej; });
-    this.__waitForEntryAnimation = promise;
+    let resolve;
+    let promise = new Promise((res) => { resolve = res });
+    this.waitForEntryAnimation = promise;
     window.requestAnimationFrame(() => {
       this.classList.add('ripple-entry');
       window.setTimeout(() => {
@@ -316,7 +316,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
    * @private
    */
   async __fadeOut() {
-    await this.__waitForEntryAnimation;
+    await this.waitForEntryAnimation;
     window.requestAnimationFrame(() => {
       this.classList.add('ripple-exit');
       window.setTimeout(()=> {
