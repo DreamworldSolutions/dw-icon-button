@@ -32,4 +32,3 @@
 --dw-icon-color
 --dw-icon-color-disabled
 ```
-
