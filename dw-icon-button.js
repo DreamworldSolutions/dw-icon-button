@@ -202,6 +202,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
     this.__waitForEntryAnimation = new Promise( (resolve) => {resolve()});
     this.__bindActiveEvents();
     this.__bindInactiveEvents();
+    console.log("dw-icon-button attached ==> remove blur");
   }
 
   disconnectedCallback() {
@@ -214,8 +215,8 @@ export class DwIconButton extends buttonFocus(LitElement) {
     return html`
       <button style=${this._buttonStyle()} 
         tabindex="${this.disabled ? -1 : ''}" 
-        @touchend="${this._onClick}" 
-        @mouseup="${this._onClick}" 
+        @touchstart="${this._onClick}" 
+        @mousedown="${this._onClick}" 
         class="center-center layout vertical">
         <dw-icon 
           .name="${this.icon}" 
