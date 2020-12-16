@@ -202,7 +202,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
     this.__waitForEntryAnimation = new Promise( (resolve) => {resolve()});
     this.__bindActiveEvents();
     this.__bindInactiveEvents();
-    console.log("dw-icon-button attached ==> remove blur");
+    console.log("dw-icon-button attached ==> remove blur", this._viewId);
   }
 
   disconnectedCallback() {
