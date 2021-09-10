@@ -212,8 +212,6 @@ export class DwIconButton extends buttonFocus(LitElement) {
     return html`
       <button style=${this._buttonStyle()} 
         tabindex="${this.disabled ? -1 : ''}" 
-        @touchstart="${this._onClick}" 
-        @mousedown="${this._onClick}" 
         class="center-center layout vertical">
         <dw-icon 
           .name="${this.icon}" 
@@ -222,6 +220,10 @@ export class DwIconButton extends buttonFocus(LitElement) {
         </dw-icon>
       </button>
     `
+  }
+
+  get __button() {
+    return this.shadowRoot.querySelector('button');
   }
 
   /**
@@ -244,16 +246,6 @@ export class DwIconButton extends buttonFocus(LitElement) {
     this._touchDevice = isTouchDevice();
   }
 
-  async _onClick() {
-    await this.waitForEntryAnimation;
-    /**
-    * call blur method to fix ripple effect after icon click.
-    */
-    setTimeout(() => {
-      this.shadowRoot.querySelector('button').blur();
-    }, 0);
-  }
-  
   /**
    * Bind active ripple events.
    * @private
@@ -304,8 +296,22 @@ export class DwIconButton extends buttonFocus(LitElement) {
       this.classList.add('ripple-entry');
       window.setTimeout(() => {
         resolve();
+        //After 500 ms check has ripple still entry animation then remove it.
+        window.setTimeout(() => {
+          if(this.__hasRippleEntry()) {
+            this.__fadeOut();
+          }
+        }, 500);
       }, 225);
     });
+  }
+
+  /**
+   * @returns `true` when element has ripple-entry class.
+   * @protected
+   */
+  __hasRippleEntry() {
+    return this.classList && this.classList.contains && this.classList.contains('ripple-entry');
   }
 
   /**
@@ -320,6 +326,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
       window.setTimeout(()=> {
         this.classList.remove('ripple-entry');
         this.classList.remove('ripple-exit');
+        this.__button && this.__button.blur();
       }, 250);
     });
   }
