@@ -83,7 +83,6 @@ export class DwIconButton extends buttonFocus(LitElement) {
           background-color: var(--mdc-theme-on-surface);
           transition: opacity 150ms;
           opacity: 0;
-          pointer-events: none;
         }
 
         :host(:not([disabled]):not([touch-device])) button:hover::before {
