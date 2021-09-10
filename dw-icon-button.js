@@ -315,10 +315,10 @@ export class DwIconButton extends buttonFocus(LitElement) {
    * @private
    */
   async __fadeOut() {
-    await this.waitForEntryAnimation;
     if(!this.__hasRippleEntry()) {
       return;
     }
+    await this.waitForEntryAnimation;
     window.requestAnimationFrame(() => {
       this.classList.add('ripple-exit');
       window.setTimeout(()=> {
