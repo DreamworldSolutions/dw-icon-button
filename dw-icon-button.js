@@ -106,7 +106,6 @@ export class DwIconButton extends buttonFocus(LitElement) {
           top: 0;
           left: 0;
           background-color: var(--mdc-theme-on-surface);
-          pointer-events: none;
           opacity: 0;
           border-radius: 50%;
         }
