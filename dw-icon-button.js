@@ -212,8 +212,6 @@ export class DwIconButton extends buttonFocus(LitElement) {
     return html`
       <button style=${this._buttonStyle()} 
         tabindex="${this.disabled ? -1 : ''}" 
-        @touchstart="${this._onClick}" 
-        @mousedown="${this._onClick}" 
         class="center-center layout vertical">
         <dw-icon 
           .name="${this.icon}" 
@@ -222,6 +220,10 @@ export class DwIconButton extends buttonFocus(LitElement) {
         </dw-icon>
       </button>
     `
+  }
+
+  get __button() {
+    return this.shadowRoot.querySelector('button');
   }
 
   /**
@@ -244,16 +246,6 @@ export class DwIconButton extends buttonFocus(LitElement) {
     this._touchDevice = isTouchDevice();
   }
 
-  async _onClick() {
-    await this.waitForEntryAnimation;
-    /**
-    * call blur method to fix ripple effect after icon click.
-    */
-    setTimeout(() => {
-      this.shadowRoot.querySelector('button').blur();
-    }, 0);
-  }
-  
   /**
    * Bind active ripple events.
    * @private
@@ -278,6 +270,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
    */
   __bindInactiveEvents() {
     this.addEventListener('mouseup', this.__fadeOut, {passive: true});
+    this.addEventListener('mouseleave', this.__fadeOut, {passive: true});
     this.addEventListener('touchend', this.__fadeOut, {passive: true});
   }
 
@@ -309,17 +302,29 @@ export class DwIconButton extends buttonFocus(LitElement) {
   }
 
   /**
+   * @returns `true` when element has ripple-entry class.
+   * @protected
+   */
+  __hasRippleEntry() {
+    return this.classList && this.classList.contains && this.classList.contains('ripple-entry');
+  }
+
+  /**
    * Fade out a current active ripple.
    * Waits till the scale animation is completed, and then performs the fadeout animation
    * @private
    */
   async __fadeOut() {
+    if(!this.__hasRippleEntry()) {
+      return;
+    }
     await this.waitForEntryAnimation;
     window.requestAnimationFrame(() => {
       this.classList.add('ripple-exit');
       window.setTimeout(()=> {
         this.classList.remove('ripple-entry');
         this.classList.remove('ripple-exit');
+        this.__button && this.__button.blur();
       }, 250);
     });
   }
