@@ -270,6 +270,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
    */
   __bindInactiveEvents() {
     this.addEventListener('mouseup', this.__fadeOut, {passive: true});
+    this.addEventListener('mouseleave', this.__fadeOut, {passive: true});
     this.addEventListener('touchend', this.__fadeOut, {passive: true});
   }
 
@@ -296,12 +297,6 @@ export class DwIconButton extends buttonFocus(LitElement) {
       this.classList.add('ripple-entry');
       window.setTimeout(() => {
         resolve();
-        //After 500 ms check has ripple still entry animation then remove it.
-        window.setTimeout(() => {
-          if(this.__hasRippleEntry()) {
-            this.__fadeOut();
-          }
-        }, 500);
       }, 225);
     });
   }
@@ -321,6 +316,9 @@ export class DwIconButton extends buttonFocus(LitElement) {
    */
   async __fadeOut() {
     await this.waitForEntryAnimation;
+    if(!this.__hasRippleEntry()) {
+      return;
+    }
     window.requestAnimationFrame(() => {
       this.classList.add('ripple-exit');
       window.setTimeout(()=> {
