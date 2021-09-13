@@ -23,12 +23,12 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@dreamworld/dw-icon@^2.1.0":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@dreamworld/dw-icon/-/dw-icon-2.1.1.tgz#3b63c9a696e8e9080aba4b13f93068c93004524f"
-  integrity sha512-R34QUIRS1hBTWpPYsOCLtWeNh0k09ReYEdoItHfg01LytyH+McUvjqztsM1z3gs6/1LtatHtlXB7/0rIeQvTTA==
+"@dreamworld/dw-icon@^2.2.0-upgrade-version.1":
+  version "2.2.0-upgrade-version.1"
+  resolved "https://registry.yarnpkg.com/@dreamworld/dw-icon/-/dw-icon-2.2.0-upgrade-version.1.tgz#9e5e90bda5154cf275354bd0bccca53183d868c5"
+  integrity sha512-tRTwK7k9etRigfjTZJq3dy4PGzumLGSFbxEfgzZWS6/126IIjE8WxwWX715IoB2ma/R4BHnTICvpHXS77H7ANA==
   dependencies:
-    "@dreamworld/pwa-helpers" "^1.7.1"
+    "@dreamworld/pwa-helpers" "^1.11.1"
     "@material/mwc-icon" "0.20.0"
     lit-element "^2.2.0"
 
@@ -57,7 +57,7 @@
     lodash-es "^4.17.15"
     pwa-helpers "^0.9.1"
 
-"@dreamworld/pwa-helpers@^1.7.1", "@dreamworld/pwa-helpers@^1.8.0":
+"@dreamworld/pwa-helpers@^1.11.1", "@dreamworld/pwa-helpers@^1.8.0":
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/@dreamworld/pwa-helpers/-/pwa-helpers-1.11.1.tgz#6ac8d465ff4e41a294c9a83bc9244f6397d7f197"
   integrity sha512-WpXKkTNAiVSao2O+lAhGAku0Ri0ABlMy5sz/EgZNZNlwYCJ+2swgyFdlpijlf9G8RG/L7WzlPzb1dzGWbU1fkQ==
