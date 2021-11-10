@@ -1,13 +1,3 @@
-/**
-@license
-Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
-*/
-
 import { css, html } from 'lit-element';
 import { LitElement } from '@dreamworld/pwa-helpers/lit-element.js';
 import { styleMap } from 'lit-html/directives/style-map';
@@ -184,6 +174,12 @@ export class DwIconButton extends buttonFocus(LitElement) {
       secondary: { type: Boolean, reflect: true },
 
       /**
+       * Input property.
+       * Tooltip text.
+       */
+      title: { type: String },
+
+      /**
        * When it is `true` don't apply hover effect.
        */
       _touchDevice: {type: Boolean, reflect: true, attribute: 'touch-device'}
@@ -219,6 +215,14 @@ export class DwIconButton extends buttonFocus(LitElement) {
           ?disabled="${this.disabled}"></dw-icon>
         </dw-icon>
       </button>
+      ${this.title ? html`
+      <dw-tooltip
+        trigger="mouseover"
+        .forEl="${this}"
+        .offset=${[0, 8]}
+        .content=${this.title}>
+      </dw-tooltip>
+      ` : ''}
     `
   }
 
