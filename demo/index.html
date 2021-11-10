@@ -1,21 +1,83 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Dw icon button</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="dw icon button">
-    
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons&display=block" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined&display=block" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="dw icon button" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons&display=block"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons+Outlined&display=block"
+      rel="stylesheet"
+    />
+    <style>
+      .tippy-box[data-theme="material"] {
+        background: #505355;
+        border-radius: 4px;
+        color: #FFF;
+        padding: 8px;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0.4px;
+        line-height: 16px;
+      }
+
+      .tippy-box[data-placement=top] .tippy-arrow {
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+        bottom: -8px
+      }
+
+      .tippy-box[data-theme="material"][data-placement=top] .tippy-arrow {
+        border-top: 10px solid #505355;
+      }
+
+      .tippy-box[data-placement=bottom] .tippy-arrow {
+        border-right: 10px solid transparent;
+        border-left: 10px solid transparent;
+        top: -8px;
+      }
+
+      .tippy-box[data-theme="material"][data-placement=bottom] .tippy-arrow {
+        border-bottom: 10px solid #505355;
+      }
+
+      .tippy-box[data-animation=shift-away][data-state=hidden] {
+        opacity: 0
+      }
+
+      .tippy-box[data-animation=shift-away][data-state=hidden][data-placement^=top] {
+        transform: translateY(10px)
+      }
+
+      .tippy-box[data-animation=shift-away][data-state=hidden][data-placement^=bottom] {
+        transform: translateY(-10px)
+      }
+
+      .tippy-box[data-animation=shift-away][data-state=hidden][data-placement^=left] {
+        transform: translateX(10px)
+      }
+
+      .tippy-box[data-animation=shift-away][data-state=hidden][data-placement^=right] {
+        transform: translateX(-10px)
+      }
+    </style>
+    <script>
+      (window.process = window.process || {}).env = {};
+    </script>
   </head>
   <body>
-  <dw-icon-button-demo></dw-icon-button-demo>
-  <noscript>
-    Please enable JavaScript to view this website.
-  </noscript>
-     
+    <dw-icon-button-demo></dw-icon-button-demo>
+    <noscript> Please enable JavaScript to view this website. </noscript>
+
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <!-- Built with love using PWA Starter Kit -->
