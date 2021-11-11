@@ -24,6 +24,7 @@
 - `secondary` Set when icon is to be shown in secondary color.
 - `iconSize`, No default value. So, default size of `dw-icon` is used (which is 24px.)
 - `buttonSize`, No default value. So, default icon container size is it's parent height and width. If buttonSize is exists then icon container size base on `buttonSize` property.
+- `title`: When it's provided, on mouse enter, shows title text as a tooltip.
 
 ## Custom CSS Properties
 
