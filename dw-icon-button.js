@@ -10,6 +10,7 @@ import { buttonFocus } from '@dreamworld/pwa-helpers';
 // These are the dw styles element needed by this element.
 import { flexLayout } from '@dreamworld/flex-layout/flex-layout.js';
 import { alignment } from '@dreamworld/flex-layout/flex-layout-alignment.js';
+import '@dreamworld/dw-tooltip/dw-tooltip';
 
 export class DwIconButton extends buttonFocus(LitElement) {
   static get styles() {
@@ -217,8 +218,8 @@ export class DwIconButton extends buttonFocus(LitElement) {
       </button>
       ${this.title ? html`
       <dw-tooltip
-        trigger="mouseover"
-        .forEl="${this}"
+        .trigger=${"mouseenter"}
+        .forEl=${this}
         .offset=${[0, 8]}
         .content=${this.title}>
       </dw-tooltip>
