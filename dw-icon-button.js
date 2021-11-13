@@ -221,6 +221,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
         .trigger=${"mouseenter"}
         .forEl=${this}
         .offset=${[0, 8]}
+        .extraOptions=${{ delay: [500, 0] }}
         .content=${this.title}>
       </dw-tooltip>
       ` : ''}
