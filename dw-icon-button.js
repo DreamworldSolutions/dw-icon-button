@@ -216,6 +216,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
           ?disabled="${this.disabled}"></dw-icon>
         </dw-icon>
       </button>
+      
       ${this.title && !isTouchDevice() ? html`
       <dw-tooltip
         .trigger=${"mouseenter"}
