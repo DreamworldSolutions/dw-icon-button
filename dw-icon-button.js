@@ -305,7 +305,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
     if(keyCode === 13 || keyCode === 32) {
       this.__onStart();
     }
-  }
+  } 
 
   /**
    * When user `enter` or `space` keyup on button then shows a ripple.
