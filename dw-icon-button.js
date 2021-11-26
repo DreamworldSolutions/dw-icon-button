@@ -260,8 +260,9 @@ export class DwIconButton extends buttonFocus(LitElement) {
   __bindActiveEvents() {
     this.addEventListener('mousedown', this.__onStart, {passive: true});
     this.addEventListener('touchstart', this.__onStart, {passive: true});
+    this.addEventListener('keydown', this.__onKeyDown, {passive: true});
   }
-
+  
   /**
    * unbind active ripple events.
    * @private
@@ -269,8 +270,9 @@ export class DwIconButton extends buttonFocus(LitElement) {
   __unbindActiveEvents() {
     this.removeEventListener('mousedown', this.__onStart, {passive: true});
     this.removeEventListener('touchstart', this.__onStart, {passive: true});
+    this.removeEventListener('keydown', this.__onKeyDown, {passive: true});
   }
-
+  
   /**
    * Bind remove/in-active ripple events.
    * @private
@@ -279,8 +281,9 @@ export class DwIconButton extends buttonFocus(LitElement) {
     this.addEventListener('mouseup', this.__fadeOut, {passive: true});
     this.addEventListener('mouseleave', this.__fadeOut, {passive: true});
     this.addEventListener('touchend', this.__fadeOut, {passive: true});
+    this.addEventListener('keyup', this.__onKeyUp, {passive: true});
   }
-
+  
   /**
    * unbind remove/in-active ripple events.
    * @private
@@ -289,6 +292,30 @@ export class DwIconButton extends buttonFocus(LitElement) {
     this.removeEventListener('mouseup', this.__fadeOut, {passive: true});
     this.removeEventListener('mouseleave', this.__fadeOut, {passive: true});
     this.removeEventListener('touchend', this.__fadeOut , {passive: true});
+    this.removeEventListener('keyup', this.__onKeyUp, {passive: true});
+  }
+
+  /**
+   * When user `enter` or `space` keydown on button then shows a ripple.
+   * @private
+   */
+   __onKeyDown(e) {
+    const keyCode = e.keyCode || e.which;
+    console.log(keyCode);
+    if(keyCode === 13 || keyCode === 32) {
+      this.__onStart();
+    }
+  } 
+
+  /**
+   * When user `enter` or `space` keyup on button then shows a ripple.
+   * @private
+   */
+  __onKeyUp(e) {
+    const keyCode = e.keyCode || e.which;
+    if(keyCode === 13 || keyCode === 32) {
+      this.__fadeOut();
+    }
   }
 
   /**
