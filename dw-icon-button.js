@@ -301,7 +301,6 @@ export class DwIconButton extends buttonFocus(LitElement) {
    */
    __onKeyDown(e) {
     const keyCode = e.keyCode || e.which;
-    console.log(keyCode);
     if(keyCode === 13 || keyCode === 32) {
       this.__onStart();
     }
@@ -365,4 +364,3 @@ export class DwIconButton extends buttonFocus(LitElement) {
 }
 
 window.customElements.define('dw-icon-button', DwIconButton);
-
