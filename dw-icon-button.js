@@ -181,6 +181,12 @@ export class DwIconButton extends buttonFocus(LitElement) {
       title: { type: String },
 
       /**
+       * Input property.
+       * Tooltip css.
+       */
+      titleTheme: {type: String },
+      
+      /**
        * When it is `true` don't apply hover effect.
        */
       _touchDevice: {type: Boolean, reflect: true, attribute: 'touch-device'}
@@ -223,7 +229,8 @@ export class DwIconButton extends buttonFocus(LitElement) {
         .forEl=${this}
         .offset=${[0, 8]}
         .extraOptions=${{ delay: [500, 0] }}
-        .content=${this.title}>
+        .content=${this.title}
+        .theme=${this.titleTheme}>
       </dw-tooltip>
       ` : ''}
     `
@@ -251,6 +258,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
     super();
     this.disabled = false;
     this._touchDevice = isTouchDevice();
+    this.titleTheme = "material";
   }
 
   /**
