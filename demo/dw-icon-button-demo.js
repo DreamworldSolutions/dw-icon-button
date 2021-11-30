@@ -92,7 +92,7 @@ export class DwIconButtoDemo extends LitElement {
           </div>
           <div class="layout vertical center">
             <h4>size : 48</h4>
-            <dw-icon-button icon="perm_media" iconSize="48" .title=${"Top"} .titleTheme=${"tomato"}></dw-icon-button>
+            <dw-icon-button icon="perm_media" iconSize="48" .title=${"Top"} .tooltipTheme=${"tomato"}></dw-icon-button>
           </div>
           <div class="layout vertical center">
             <h4>Icon Button with Tooltip</h4>
