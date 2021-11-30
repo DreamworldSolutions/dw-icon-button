@@ -5,7 +5,7 @@
   "main": "dw-icon-button.js",
   "dependencies": {
     "@dreamworld/dw-icon": "^2.1.0",
-    "@dreamworld/dw-tooltip": "^2.1.1",
+    "@dreamworld/dw-tooltip": "2.1.2-development.1",
     "@dreamworld/flex-layout": "^1.0.0",
     "@dreamworld/pwa-helpers": "^1.8.0",
     "@dreamworld/web-util": "^1.2.0",

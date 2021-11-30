@@ -32,10 +32,10 @@
     "@material/mwc-icon" "0.20.0"
     lit-element "^2.2.0"
 
-"@dreamworld/dw-tooltip@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@dreamworld/dw-tooltip/-/dw-tooltip-2.1.1.tgz#d27bdded78c34cf3124111d2f52718755ce703b6"
-  integrity sha512-oQ+zQR9VDlMejcfeO5oPIbSogtZGVNDfzMNFpS2x1iPpi64xc8L1LiYCGF94f2CVPPk/JIB3eGR3G3Y3ABPOLw==
+"@dreamworld/dw-tooltip@2.1.2-development.1":
+  version "2.1.2-development.1"
+  resolved "https://registry.yarnpkg.com/@dreamworld/dw-tooltip/-/dw-tooltip-2.1.2-development.1.tgz#ca0588c6cbdbbb3807106030e2266565e59adb6e"
+  integrity sha512-Crt0euV23fb/MFktaxW5sECk14nUfK1YMSVTyocbVuYST1g5GHUZ/BAoWVE+pLUIp0ltDJGUip/TV4GiFcrcTA==
   dependencies:
     "@dreamworld/pwa-helpers" "^1.7.1"
     lit-element "^2.2.0"
