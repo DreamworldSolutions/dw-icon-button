@@ -185,7 +185,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
        * Type of the icon. By default it shows FILLED icon.
        * Possible values: FILLED and OUTLINED
        */
-      iconFont: { type: String, reflect: true },
+      iconFont: { type: String, reflect: true }, 
 
       /**
        * When it is `true` don't apply hover effect.
