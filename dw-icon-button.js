@@ -181,6 +181,13 @@ export class DwIconButton extends buttonFocus(LitElement) {
       title: { type: String },
 
       /**
+       * Input property
+       * Type of the icon. By default it shows FILLED icon.
+       * Possible values: FILLED and OUTLINED
+       */
+      iconFont: { type: String, reflect: true },
+
+      /**
        * When it is `true` don't apply hover effect.
        */
       _touchDevice: {type: Boolean, reflect: true, attribute: 'touch-device'}
@@ -213,6 +220,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
         <dw-icon 
           .name="${this.icon}" 
           .size=${this.iconSize} 
+          .iconFont="${this.iconFont}"
           ?disabled="${this.disabled}"></dw-icon>
         </dw-icon>
       </button>
