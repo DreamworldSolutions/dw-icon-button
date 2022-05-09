@@ -42,7 +42,8 @@ jobs:
       - image: circleci/node:14
     steps:
       - checkout
-      - run: yarn install --frozen-lockfile --non-interactive
+      - run: yarn install --production=true --flat --non-ineractive
+      - run: yarn install --production=false --non-interactive
       - run:
           name: Deploy
           command: |
@@ -54,7 +55,8 @@ jobs:
       - image: circleci/node:14
     steps:
       - checkout
-      - run: yarn install --frozen-lockfile --non-interactive
+      - run: yarn install --production=true --flat --non-ineractive
+      - run: yarn install --production=false --non-interactive
       - run: echo "Running release job"
       - run:
           name: Deploy
