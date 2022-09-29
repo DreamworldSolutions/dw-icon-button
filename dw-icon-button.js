@@ -1,5 +1,4 @@
-import { css, html } from 'lit-element';
-import { LitElement } from '@dreamworld/pwa-helpers/lit-element.js';
+import { LitElement, css, html } from '@dreamworld/pwa-helpers/lit.js';
 import { styleMap } from 'lit-html/directives/style-map.js';
 
 //These are the dw element needed by this elemenet
