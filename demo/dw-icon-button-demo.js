@@ -5,8 +5,6 @@ import { DwIcon } from '@dreamworld/dw-icon/dw-icon.js';
 import '../dw-icon-button.js';
 
 // These are the dw styles element needed by this element.
-import { flexLayout } from '@dreamworld/flex-layout/flex-layout.js';
-import { alignment } from '@dreamworld/flex-layout/flex-layout-alignment.js';
 import { ThemeStyle } from '@dreamworld/material-styles/theme.js';
 
 //These are the mwc element needed by this elemenet
@@ -26,8 +24,6 @@ DwIcon.addIcons(
 export class DwIconButtoDemo extends LitElement {
   static get styles() {
     return [
-      flexLayout,
-      alignment,
       ThemeStyle,
       css`
         :host {
@@ -42,6 +38,18 @@ export class DwIconButtoDemo extends LitElement {
         }
         mwc-formfield {
           --mdc-theme-text-primary-on-background: var(--mdc-theme-text-primary);
+        }
+        .horizontal{
+          flex-direction: row;
+        }
+        .vertical{
+          flex-direction: column;
+        }
+        .center{
+          align-items: center;
+        }
+        .layout{
+          display: flex;
         }
       `
     ];

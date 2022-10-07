@@ -6,7 +6,6 @@
   "dependencies": {
     "@dreamworld/dw-icon": "^3.0.0",
     "@dreamworld/dw-tooltip": "^2.3.0",
-    "@dreamworld/flex-layout": "^1.0.0",
     "@dreamworld/pwa-helpers": "^1.13.1",
     "@dreamworld/web-util": "^1.2.0",
     "@material/mwc-base": "^0.26.1"
@@ -15,11 +14,13 @@
     "@dreamworld/material-styles": "^1.1.0",
     "@material/mwc-formfield": "^0.26.1",
     "@material/mwc-switch": "^0.26.1",
+    "@web/dev-server": "^0.1.34",
     "@webcomponents/webcomponentsjs": "^2.2.10",
     "semantic-release": "17.0.8"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "wds --node-resolve --app-index demo/index.html --open --watch"
   },
   "repository": {
     "type": "git",
