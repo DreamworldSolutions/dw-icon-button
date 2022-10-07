@@ -140,6 +140,9 @@ export class DwIconButton extends buttonFocus(LitElement) {
         .vertical{
           flex-direction: column;
         }
+        .layout{
+          display: flex;
+        }
       `
     ];
   }
