@@ -4,8 +4,8 @@
   "description": "## Why don't we use `mwc-icon-button`? - We created `dw-icon` to have extended icon set, sepecific to the app. But, those icons we can't be used with  `mwc-icon-button`.  - We found issue with `mwc-icon-button` that it can't be resized easily.",
   "main": "dw-icon-button.js",
   "dependencies": {
-    "@dreamworld/dw-icon": "^3.0.0",
-    "@dreamworld/dw-tooltip": "^2.3.0",
+    "@dreamworld/dw-icon": "https://github.com/DreamworldSolutions/dw-icon.git#feature/upgrade-to-lit",
+    "@dreamworld/dw-tooltip": "https://github.com/DreamworldSolutions/dw-tooltip.git#feature/upgrade-to-lit",
     "@dreamworld/pwa-helpers": "^1.13.1",
     "@dreamworld/web-util": "^1.2.0",
     "@material/mwc-base": "^0.26.1"

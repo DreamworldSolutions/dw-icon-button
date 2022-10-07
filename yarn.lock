@@ -28,23 +28,19 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@dreamworld/dw-icon@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@dreamworld/dw-icon/-/dw-icon-3.0.0.tgz#9fce33038bc44da3f9ba0a6c73ac583a40cb5602"
-  integrity sha512-LeLly7rbRdctpdpSSQJUSK5ActP1tuqxUPXJyVbkGgkwlJ6nxHqb9qbbizFjpvrq5XyQDYXZs4eQB6DwiBGHPw==
+"@dreamworld/dw-icon@https://github.com/DreamworldSolutions/dw-icon.git#feature/upgrade-to-lit":
+  version "0.0.0-development"
+  resolved "https://github.com/DreamworldSolutions/dw-icon.git#81e0249a4ad628978c18dcae945f470aff44ea5e"
   dependencies:
-    "@dreamworld/pwa-helpers" "^1.13.0"
+    "@dreamworld/pwa-helpers" "^1.13.1"
     "@material/mwc-icon" "^0.27.0"
-    lit "^2.0.2"
 
-"@dreamworld/dw-tooltip@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@dreamworld/dw-tooltip/-/dw-tooltip-2.3.0.tgz#d870aa9beee95e9bfd25696ba801517cb2112896"
-  integrity sha512-AU5tGYN98mDzHRDse1ONF9HrT1iS1PCN+O2tUqnm8i4yBGIQtW4qkiUedsBy2391pabWBUERNWJUBoBrUq5wcQ==
+"@dreamworld/dw-tooltip@https://github.com/DreamworldSolutions/dw-tooltip.git#feature/upgrade-to-lit":
+  version "0.0.0-development"
+  resolved "https://github.com/DreamworldSolutions/dw-tooltip.git#267cc7504e55cfbdc522c92c5a16794db35ce8a7"
   dependencies:
     "@dreamworld/material-styles" "^2.1.0"
-    "@dreamworld/pwa-helpers" "^1.7.1"
-    lit-element "^2.2.0"
+    "@dreamworld/pwa-helpers" "^1.13.1"
     tippy.js "^6.2.7"
 
 "@dreamworld/material-styles@^1.1.0":
@@ -61,7 +57,7 @@
   dependencies:
     lit-element "^2.2.0"
 
-"@dreamworld/pwa-helpers@^1.13.0", "@dreamworld/pwa-helpers@^1.13.1", "@dreamworld/pwa-helpers@^1.7.1":
+"@dreamworld/pwa-helpers@^1.13.1":
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/@dreamworld/pwa-helpers/-/pwa-helpers-1.13.1.tgz#825e6faf1c530591a48b6568996cdbebf8fcacc8"
   integrity sha512-/NHwoVm7cv6w1obkFYNW2ebPc//r4bzp7CjfGKHgzLaKnqt4RwY/n8nCaqzPyaJ4RJH/HnC5zYijN5g3+PhDqw==
@@ -2839,7 +2835,7 @@ lit-html@^2.2.0, lit-html@^2.3.0:
   dependencies:
     "@types/trusted-types" "^2.0.2"
 
-lit@^2.0.0, lit@^2.0.2, lit@^2.3.1:
+lit@^2.0.0, lit@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/lit/-/lit-2.3.1.tgz#2cf1c2042da1e44c7a7cc72dff2d72303fd26f48"
   integrity sha512-TejktDR4mqG3qB32Y8Lm5Lye3c8SUehqz7qRsxe1PqGYL6me2Ef+jeQAEqh20BnnGncv4Yxy2njEIT0kzK1WCw==
