@@ -28,7 +28,8 @@ export class DwIconButtoDemo extends LitElement {
       css`
         :host {
           display: block;
-          color: var(--mdc-theme-text-primary);
+          color: var(--mdc-theme-text-primary-on-background);
+          background-color: var(--mdc-theme-background);
         }
         section.main {
           padding: 24px;
