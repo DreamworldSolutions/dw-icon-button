@@ -1,23 +1,10 @@
-/**
-@license
-Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
-*/
-
-import { css, html, svg } from 'lit-element';
-import { LitElement } from '@dreamworld/pwa-helpers/lit-element.js';
+import { LitElement, css, html, svg } from '@dreamworld/pwa-helpers/lit.js';
 
 //These are the dw element needed by this elemenet
 import { DwIcon } from '@dreamworld/dw-icon/dw-icon.js';
 import '../dw-icon-button.js';
 
 // These are the dw styles element needed by this element.
-import { flexLayout } from '@dreamworld/flex-layout/flex-layout.js';
-import { alignment } from '@dreamworld/flex-layout/flex-layout-alignment.js';
 import { ThemeStyle } from '@dreamworld/material-styles/theme.js';
 
 //These are the mwc element needed by this elemenet
@@ -37,13 +24,12 @@ DwIcon.addIcons(
 export class DwIconButtoDemo extends LitElement {
   static get styles() {
     return [
-      flexLayout,
-      alignment,
       ThemeStyle,
       css`
         :host {
           display: block;
-          color: var(--mdc-theme-text-primary);
+          color: var(--mdc-theme-text-primary-on-background);
+          background-color: var(--mdc-theme-background);
         }
         section.main {
           padding: 24px;
@@ -53,6 +39,18 @@ export class DwIconButtoDemo extends LitElement {
         }
         mwc-formfield {
           --mdc-theme-text-primary-on-background: var(--mdc-theme-text-primary);
+        }
+        .horizontal{
+          flex-direction: row;
+        }
+        .vertical{
+          flex-direction: column;
+        }
+        .center{
+          align-items: center;
+        }
+        .layout{
+          display: flex;
         }
       `
     ];

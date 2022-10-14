@@ -1,6 +1,5 @@
-import { css, html } from 'lit-element';
-import { LitElement } from '@dreamworld/pwa-helpers/lit-element.js';
-import { styleMap } from 'lit-html/directives/style-map.js';
+import { LitElement, css, html } from '@dreamworld/pwa-helpers/lit.js';
+import { styleMap } from 'lit/directives/style-map.js';
 
 //These are the dw element needed by this elemenet
 import '@dreamworld/dw-icon/dw-icon.js';
@@ -8,15 +7,11 @@ import { isTouchDevice } from '@dreamworld/web-util/isTouchDevice';
 import { buttonFocus } from '@dreamworld/pwa-helpers';
 
 // These are the dw styles element needed by this element.
-import { flexLayout } from '@dreamworld/flex-layout/flex-layout.js';
-import { alignment } from '@dreamworld/flex-layout/flex-layout-alignment.js';
 import '@dreamworld/dw-tooltip/dw-tooltip';
 
 export class DwIconButton extends buttonFocus(LitElement) {
   static get styles() {
     return [
-      flexLayout,
-      alignment,
       css`
         :host {
           display: block;
@@ -137,6 +132,16 @@ export class DwIconButton extends buttonFocus(LitElement) {
         :host(.ripple-exit) button::after {
           transform: scale(1);
           animation: fade-out-ripple 250ms forwards;
+        }
+        .center-center{
+          align-items: center;
+          justify-content: center;
+        }
+        .vertical{
+          flex-direction: column;
+        }
+        .layout{
+          display: flex;
         }
       `
     ];
