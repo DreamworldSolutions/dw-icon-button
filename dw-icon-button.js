@@ -193,6 +193,13 @@ export class DwIconButton extends buttonFocus(LitElement) {
       iconFont: { type: String, reflect: true }, 
 
       /**
+       * Whether button is focusable or not
+       * Default true
+       * When false set button's tabIndex -1
+       */
+      focusable: Boolean,
+
+      /**
        * When it is `true` don't apply hover effect.
        */
       _touchDevice: {type: Boolean, reflect: true, attribute: 'touch-device'}
@@ -220,7 +227,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
   render() {
     return html`
       <button style=${this._buttonStyle()} 
-        tabindex="${this.disabled ? -1 : ''}" 
+        tabindex="${this.disabled || !this.focusable ? -1 : ''}" 
         class="center-center layout vertical">
         <dw-icon 
           .name="${this.icon}" 
@@ -263,6 +270,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
   constructor() {
     super();
     this.disabled = false;
+    this.focusable = true;
     this._touchDevice = isTouchDevice();
   }
 

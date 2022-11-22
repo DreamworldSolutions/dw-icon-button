@@ -78,7 +78,7 @@ export class DwIconButtoDemo extends LitElement {
           </div>
           <div class="layout vertical center">
             <h4>Primary</h4>
-            <dw-icon-button icon="perm_media" primary></dw-icon-button>
+            <dw-icon-button icon="perm_media" primary .focusable=${false}></dw-icon-button>
           </div>
           <div class="layout vertical center">
             <h4>Secondary</h4>
