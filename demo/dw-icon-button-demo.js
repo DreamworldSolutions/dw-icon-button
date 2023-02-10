@@ -94,7 +94,7 @@ export class DwIconButtoDemo extends LitElement {
           </div>
           <div class="layout vertical center">
             <h4>Icon Button with Tooltip</h4>
-            <dw-icon-button icon="more_vert" .title=${'Click here for more info'} iconSize="48"></dw-icon-button>
+            <dw-icon-button icon="more_vert" .title=${'Click here for more info'} iconSize="48" .placement=${'bottom'}></dw-icon-button>
           </div>
           <div class="layout vertical center">
             <h4>Symbol</h4>
@@ -102,7 +102,7 @@ export class DwIconButtoDemo extends LitElement {
           </div>
           <div class="layout vertical center">
             <h4>Icon Button with Tooltip when icon is disable</h4>
-            <dw-icon-button icon="more_vert" .disabledTitle="${'icon is disabled'}" disabled iconSize="48"></dw-icon-button>
+            <dw-icon-button icon="more_vert" .disabledTitle="${'icon is disabled'}" disabled iconSize="48" .placement=${'bottom'}></dw-icon-button>
           </div>
         </section>
         <h3> Custom SVG Icons </h3>

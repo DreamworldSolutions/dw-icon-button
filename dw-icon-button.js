@@ -203,7 +203,16 @@ export class DwIconButton extends buttonFocus(LitElement) {
       /**
        * When it is `true` don't apply hover effect.
        */
-      _touchDevice: {type: Boolean, reflect: true, attribute: 'touch-device'}
+      _touchDevice: {type: Boolean, reflect: true, attribute: 'touch-device'},
+
+      /**
+       * Input property
+       * Positions the tippy relative to its reference element. 
+       * Use the suffix -start or -end to shift the tippy to the start or end of the reference element, instead of centering it. 
+       * For example, "top-start" or  "left-end".
+       * Default value - 'top'
+       */
+      placement: { type: String },
     }
   }
 
@@ -248,6 +257,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
             .offset=${[0, 8]}
             .extraOptions=${{ delay: [500, 0] }}
             .content=${this.disabledTitle}
+            .placement=${this.placement}
           >
           </dw-tooltip>`
         : ``
@@ -259,7 +269,9 @@ export class DwIconButton extends buttonFocus(LitElement) {
         .forEl=${this}
         .offset=${[0, 8]}
         .extraOptions=${{ delay: [500, 0] }}
-        .content=${this.title}>
+        .content=${this.title}
+        .placement=${this.placement}
+        >
       </dw-tooltip>
       ` : ''}
     `
