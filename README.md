@@ -25,6 +25,9 @@
 - `iconSize`, No default value. So, default size of `dw-icon` is used (which is 24px.)
 - `buttonSize`, No default value. So, default icon container size is it's parent height and width. If buttonSize is exists then icon container size base on `buttonSize` property.
 - `title`: When it's provided, on mouse enter, shows title text as a tooltip.
+- `disabledTitle`: When it's provided and icon is disable, on mouse enter, shows disabledTitle text as a tooltip.
+
+- __Note:__ If you want a tooltip when an icon is disabled, you can use the "disabledTitle" property. If you want a tooltip when an icon is not disabled, you can use the "title" property. If you want tooltip in both situations, you have to use both properties.
 
 ## Custom CSS Properties
 
