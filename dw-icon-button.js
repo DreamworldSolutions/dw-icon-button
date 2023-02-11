@@ -193,6 +193,12 @@ export class DwIconButton extends buttonFocus(LitElement) {
       iconFont: { type: String, reflect: true }, 
 
       /**
+       * When it's `true`, shows `Material Symbols` icon.
+       * [Reference](https://fonts.google.com/icons?icon.set=Material+Symbols)
+       */
+      symbol: { type: Boolean, reflect: true },
+
+      /**
        * When it is `true` don't apply hover effect.
        */
       _touchDevice: {type: Boolean, reflect: true, attribute: 'touch-device'}
@@ -226,6 +232,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
           .name="${this.icon}" 
           .size=${this.iconSize} 
           .iconFont="${this.iconFont}"
+          ?symbol="${this.symbol}"
           ?disabled="${this.disabled}"></dw-icon>
         </dw-icon>
       </button>
