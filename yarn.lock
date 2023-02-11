@@ -28,10 +28,10 @@
   resolved "https://registry.yarnpkg.com/@colors/colors/-/colors-1.5.0.tgz#bb504579c1cae923e6576a4f5da43d25f97bdbd9"
   integrity sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==
 
-"@dreamworld/dw-icon@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@dreamworld/dw-icon/-/dw-icon-4.0.0.tgz#c43a3d3ef92c0d80744a6d2d4a08f0d647af142d"
-  integrity sha512-pWEZu9Fkp+YYSIQ58WNJQ1iJvXQmS1Mvtz1a+AOxWPAS47TWU//SE7yV1cenOAd+Kw44IOkdlzuDbKZiw58VdA==
+"@dreamworld/dw-icon@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@dreamworld/dw-icon/-/dw-icon-4.1.0.tgz#ee07ef792eb8ed680204281a3d62fc783583adca"
+  integrity sha512-1l6LC/srQdL/Ty9KeybPD4LPe3Jo4WgqT2NUyAsqKsQ5WSESAJKNDGTz43qzXtlUSzU6y/jQf89uucMx0iKNbQ==
   dependencies:
     "@dreamworld/pwa-helpers" "^1.13.1"
     "@material/mwc-icon" "0.27.0"

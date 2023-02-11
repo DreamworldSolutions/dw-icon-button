@@ -96,6 +96,11 @@ export class DwIconButtoDemo extends LitElement {
             <h4>Icon Button with Tooltip</h4>
             <dw-icon-button icon="more_vert" .title=${'Click here for more info'} iconSize="48"></dw-icon-button>
           </div>
+          <div class="layout vertical center">
+            <h4>Symbol</h4>
+            <dw-icon-button icon="signal_wifi_statusbar_not_connected" iconFont="OUTLINED" symbol iconSize="48"></dw-icon-button>
+          </div>
+
         </section>
         <h3> Custom SVG Icons </h3>
         <section class="layout horizontal"> 
