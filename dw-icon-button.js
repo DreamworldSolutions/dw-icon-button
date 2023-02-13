@@ -3,11 +3,11 @@ import { styleMap } from 'lit/directives/style-map.js';
 
 //These are the dw element needed by this elemenet
 import '@dreamworld/dw-icon/dw-icon.js';
-import { isTouchDevice } from '@dreamworld/web-util/isTouchDevice';
-import { buttonFocus } from '@dreamworld/pwa-helpers';
+import { isTouchDevice } from '@dreamworld/web-util/isTouchDevice.js';
+import { buttonFocus } from '@dreamworld/pwa-helpers/button-focus.js';
 
 // These are the dw styles element needed by this element.
-import '@dreamworld/dw-tooltip/dw-tooltip';
+import '@dreamworld/dw-tooltip/dw-tooltip.js';
 
 export class DwIconButton extends buttonFocus(LitElement) {
   static get styles() {
