@@ -357,4 +357,4 @@ export class DwIconButton extends buttonFocus(LitElement) {
   }
 }
 
-window.customElements.define('dw-icon-button', DwIconButton);
+customElements.define('dw-icon-button', DwIconButton);
