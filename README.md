@@ -28,7 +28,7 @@
 - `disabledTitle`: When it's provided and icon is disable, on mouse enter, shows disabledTitle text as a tooltip.
 - `placement`: Set tooltip position. Default value is top.
 
-- __Note:__ If you want a tooltip when an icon is disabled, you can use the "disabledTitle" property. If you want a tooltip when an icon is not disabled, you can use the "title" property. If you want tooltip in both situations, you have to use both properties.
+- __Note:__ The "disabledTitle" property displays the tooltip only when the icon-button is disabled, whereas the "title" property displays the tooltip when the icon-button is not disabled. Set both properties to show the tooltip in both cases.
 
 ## Custom CSS Properties
 
