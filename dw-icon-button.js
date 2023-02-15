@@ -22,10 +22,6 @@ export class DwIconButton extends buttonFocus(LitElement) {
           display: none; 
         }
 
-        :host([disabled]){
-          pointer-events: none;
-        } 
-
         :host([primary]) {
           --dw-icon-color: var(--mdc-theme-primary);
           --dw-icon-color-active: var(--mdc-theme-primary);
@@ -186,6 +182,12 @@ export class DwIconButton extends buttonFocus(LitElement) {
       title: { type: String },
 
       /**
+       * Input property.
+       * Disabled Tooltip text.
+       */
+       disabledTitle: { type: String },
+
+      /**
        * Input property
        * Type of the icon. By default it shows FILLED icon.
        * Possible values: FILLED and OUTLINED
@@ -201,7 +203,16 @@ export class DwIconButton extends buttonFocus(LitElement) {
       /**
        * When it is `true` don't apply hover effect.
        */
-      _touchDevice: {type: Boolean, reflect: true, attribute: 'touch-device'}
+      _touchDevice: {type: Boolean, reflect: true, attribute: 'touch-device'},
+
+      /**
+       * Input property
+       * Positions the tippy relative to its reference element. 
+       * Use the suffix -start or -end to shift the tippy to the start or end of the reference element, instead of centering it. 
+       * For example, "top-start" or  "left-end".
+       * Default value - 'top'
+       */
+      placement: { type: String },
     }
   }
 
@@ -225,28 +236,51 @@ export class DwIconButton extends buttonFocus(LitElement) {
 
   render() {
     return html`
-      <button style=${this._buttonStyle()} 
-        tabindex="${this.disabled ? -1 : ''}" 
-        class="center-center layout vertical">
-        <dw-icon 
-          .name="${this.icon}" 
-          .size=${this.iconSize} 
-          .iconFont="${this.iconFont}"
-          ?symbol="${this.symbol}"
-          ?disabled="${this.disabled}"></dw-icon>
-        </dw-icon>
-      </button>
-      
+      <div id="wrapper" @click=${this._onTooltipContainerClick}>
+        <button style=${this._buttonStyle()} ;
+          tabindex="${this.disabled ? -1 : ''}" 
+          class="center-center layout vertical">
+          <dw-icon 
+            .name="${this.icon}" 
+            .size=${this.iconSize} 
+            .iconFont="${this.iconFont}"
+            ?symbol="${this.symbol}"
+            ?disabled="${this.disabled}"></dw-icon>
+          </dw-icon>
+        </button>
+      </div>
+
+      ${this.disabledTitle && this.disabled && !isTouchDevice() 
+        ? html`<dw-tooltip
+            .trigger=${"mouseenter"}
+            .for=${"wrapper"}
+            .offset=${[0, 8]}
+            .extraOptions=${{ delay: [500, 0] }}
+            .content=${this.disabledTitle}
+            .placement=${this.placement}
+          >
+          </dw-tooltip>`
+        : ``
+      }
+
       ${this.title && !isTouchDevice() ? html`
       <dw-tooltip
         .trigger=${"mouseenter"}
         .forEl=${this}
         .offset=${[0, 8]}
         .extraOptions=${{ delay: [500, 0] }}
-        .content=${this.title}>
+        .content=${this.title}
+        .placement=${this.placement}
+        >
       </dw-tooltip>
       ` : ''}
     `
+  }
+
+  _onTooltipContainerClick(e) {
+    if(this.disabled) {
+      e.stopImmediatePropagation();
+    }
   }
 
   get __button() {
