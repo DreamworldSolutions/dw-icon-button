@@ -1,13 +1,13 @@
-import { LitElement, css, html } from '@dreamworld/pwa-helpers/lit.js';
-import { styleMap } from 'lit/directives/style-map.js';
+import { css, html, LitElement } from "@dreamworld/pwa-helpers/lit.js";
+import { styleMap } from "lit/directives/style-map.js";
 
 //These are the dw element needed by this elemenet
-import '@dreamworld/dw-icon/dw-icon.js';
-import { isTouchDevice } from '@dreamworld/web-util/isTouchDevice.js';
-import { buttonFocus } from '@dreamworld/pwa-helpers/button-focus.js';
+import "@dreamworld/dw-icon/dw-icon.js";
+import { buttonFocus } from "@dreamworld/pwa-helpers/button-focus.js";
+import { isTouchDevice } from "@dreamworld/web-util/isTouchDevice.js";
 
 // These are the dw styles element needed by this element.
-import '@dreamworld/dw-tooltip/dw-tooltip.js';
+import "@dreamworld/dw-tooltip/dw-tooltip.js";
 
 export class DwIconButton extends buttonFocus(LitElement) {
   static get styles() {
@@ -17,9 +17,9 @@ export class DwIconButton extends buttonFocus(LitElement) {
           display: block;
           outline: none;
         }
-        
+
         :host([hidden]) {
-          display: none; 
+          display: none;
         }
 
         :host([primary]) {
@@ -54,7 +54,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
           border-radius: 50%;
         }
 
-        button::before  {
+        button::before {
           content: "";
           display: block;
           position: absolute;
@@ -80,7 +80,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
         }
 
         button::after {
-          content: '';
+          content: "";
           display: block;
           position: absolute;
           width: 100%;
@@ -94,30 +94,43 @@ export class DwIconButton extends buttonFocus(LitElement) {
 
         @keyframes scale-in-ripple {
           from {
-            animation-timing-function:cubic-bezier(0.4, 0, 0.2, 1);
-            transform: scale(0.6);}
-          to {transform: scale(1);}
+            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transform: scale(0.6);
+          }
+          to {
+            transform: scale(1);
+          }
         }
 
         @keyframes fade-in-ripple {
-          from {opacity: 0;}
-          to {opacity: 0.12;}
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 0.12;
+          }
         }
 
         @keyframes fade-out-ripple {
-          from {opacity: 0.12;}
-          to {opacity: 0;}
+          from {
+            opacity: 0.12;
+          }
+          to {
+            opacity: 0;
+          }
         }
 
-        :host([disabled]) button::before, :host([disabled]) button::after {
+        :host([disabled]) button::before,
+        :host([disabled]) button::after {
           background-color: transparent;
         }
 
-
-        :host([primary]) button::before, :host([primary]) button::after {
+        :host([primary]) button::before,
+        :host([primary]) button::after {
           background-color: var(--mdc-theme-primary);
         }
-        :host([secondary]) button::before, :host([secondary]) button::after {
+        :host([secondary]) button::before,
+        :host([secondary]) button::after {
           background-color: var(--mdc-theme-secondary);
         }
 
@@ -129,17 +142,21 @@ export class DwIconButton extends buttonFocus(LitElement) {
           transform: scale(1);
           animation: fade-out-ripple 250ms forwards;
         }
-        .center-center{
+        .center-center {
           align-items: center;
           justify-content: center;
         }
-        .vertical{
+        .vertical {
           flex-direction: column;
         }
-        .layout{
+        .layout {
           display: flex;
         }
-      `
+
+        :host([no-focus-effect]) button:focus::before {
+          opacity: 0;
+        }
+      `,
     ];
   }
 
@@ -185,14 +202,14 @@ export class DwIconButton extends buttonFocus(LitElement) {
        * Input property.
        * Disabled Tooltip text.
        */
-       disabledTitle: { type: String },
+      disabledTitle: { type: String },
 
       /**
        * Input property
        * Type of the icon. By default it shows FILLED icon.
        * Possible values: FILLED and OUTLINED
        */
-      iconFont: { type: String, reflect: true }, 
+      iconFont: { type: String, reflect: true },
 
       /**
        * When it's `true`, shows `Material Symbols` icon.
@@ -203,17 +220,22 @@ export class DwIconButton extends buttonFocus(LitElement) {
       /**
        * When it is `true` don't apply hover effect.
        */
-      _touchDevice: {type: Boolean, reflect: true, attribute: 'touch-device'},
+      _touchDevice: { type: Boolean, reflect: true, attribute: "touch-device" },
 
       /**
        * Input property
-       * Positions the tippy relative to its reference element. 
-       * Use the suffix -start or -end to shift the tippy to the start or end of the reference element, instead of centering it. 
+       * Positions the tippy relative to its reference element.
+       * Use the suffix -start or -end to shift the tippy to the start or end of the reference element, instead of centering it.
        * For example, "top-start" or  "left-end".
        * Default value - 'top'
        */
       placement: { type: String },
-    }
+
+      /**
+       * whether to apply a focus effect on the button or not.
+       */
+      _noFocusEffect: { type: Boolean, reflect: true, attribute: "no-focus-effect" },
+    };
   }
 
   connectedCallback() {
@@ -223,22 +245,30 @@ export class DwIconButton extends buttonFocus(LitElement) {
      * Later on, it's value will be changed when entry animation is started (__onStart).
      * And when entry animation is completed, that promise gets resolved.
      */
-    this.waitForEntryAnimation = new Promise( (resolve) => {resolve()});
+    this.waitForEntryAnimation = new Promise((resolve) => {
+      resolve();
+    });
     this.__bindActiveEvents();
     this.__bindInactiveEvents();
+
+    this.addEventListener("mousedown", this._onMouseDown);
+    this.addEventListener("blur", this._onBlur);
   }
 
   disconnectedCallback() {
     this.__unbindActiveEvents();
     this.__unbindInactiveEvents();
     super.disconnectedCallback && super.disconnectedCallback();
+
+    this.removeEventListener("mousedown", this._onMouseDown);
+    this.removeEventListener("blur", this._onBlur);
   }
 
   render() {
     return html`
       <div id="wrapper" @click=${this._onTooltipContainerClick}>
         <button style=${this._buttonStyle()} ;
-          tabindex="${this.disabled ? -1 : ''}" 
+          tabindex="${this.disabled ? -1 : ""}" 
           class="center-center layout vertical">
           <dw-icon 
             .name="${this.icon}" 
@@ -250,41 +280,46 @@ export class DwIconButton extends buttonFocus(LitElement) {
         </button>
       </div>
 
-      ${this.disabledTitle && this.disabled && !isTouchDevice() 
-        ? html`<dw-tooltip
-            .trigger=${"mouseenter"}
-            .for=${"wrapper"}
-            .offset=${[0, 8]}
-            .extraOptions=${{ delay: [500, 0] }}
-            .content=${this.disabledTitle}
-            .placement=${this.placement}
-          >
-          </dw-tooltip>`
-        : ``
+      ${
+        this.disabledTitle && this.disabled && !isTouchDevice()
+          ? html`<dw-tooltip
+              .trigger=${"mouseenter"}
+              .for=${"wrapper"}
+              .offset=${[0, 8]}
+              .extraOptions=${{ delay: [500, 0] }}
+              .content=${this.disabledTitle}
+              .placement=${this.placement}
+            >
+            </dw-tooltip>`
+          : ``
       }
 
-      ${this.title && !isTouchDevice() ? html`
-      <dw-tooltip
-        .trigger=${"mouseenter"}
-        .forEl=${this}
-        .offset=${[0, 8]}
-        .extraOptions=${{ delay: [500, 0] }}
-        .content=${this.title}
-        .placement=${this.placement}
-        >
-      </dw-tooltip>
-      ` : ''}
-    `
+      ${
+        this.title && !isTouchDevice()
+          ? html`
+              <dw-tooltip
+                .trigger=${"mouseenter"}
+                .forEl=${this}
+                .offset=${[0, 8]}
+                .extraOptions=${{ delay: [500, 0] }}
+                .content=${this.title}
+                .placement=${this.placement}
+              >
+              </dw-tooltip>
+            `
+          : ""
+      }
+    `;
   }
 
   _onTooltipContainerClick(e) {
-    if(this.disabled) {
+    if (this.disabled) {
       e.stopImmediatePropagation();
     }
   }
 
   get __button() {
-    return this.shadowRoot.querySelector('button');
+    return this.shadowRoot.querySelector("button");
   }
 
   /**
@@ -293,18 +328,23 @@ export class DwIconButton extends buttonFocus(LitElement) {
    * @protected
    */
   _buttonStyle() {
-    if(!this.buttonSize) {
-      return '';
+    if (!this.buttonSize) {
+      return "";
     }
-    
+
     let padding = (this.buttonSize - (this.iconSize || 24)) / 2;
-    return styleMap({ width: this.buttonSize + 'px', height: this.buttonSize + 'px', padding: padding + 'px'});
+    return styleMap({
+      width: this.buttonSize + "px",
+      height: this.buttonSize + "px",
+      padding: padding + "px",
+    });
   }
 
   constructor() {
     super();
     this.disabled = false;
     this._touchDevice = isTouchDevice();
+    this._noFocusEffect = false;
   }
 
   /**
@@ -312,8 +352,8 @@ export class DwIconButton extends buttonFocus(LitElement) {
    * @private
    */
   __bindActiveEvents() {
-    this.addEventListener('mousedown', this.__onStart, {passive: true});
-    this.addEventListener('touchstart', this.__onStart, {passive: true});
+    this.addEventListener("mousedown", this.__onStart, { passive: true });
+    this.addEventListener("touchstart", this.__onStart, { passive: true });
   }
 
   /**
@@ -321,8 +361,8 @@ export class DwIconButton extends buttonFocus(LitElement) {
    * @private
    */
   __unbindActiveEvents() {
-    this.removeEventListener('mousedown', this.__onStart, {passive: true});
-    this.removeEventListener('touchstart', this.__onStart, {passive: true});
+    this.removeEventListener("mousedown", this.__onStart, { passive: true });
+    this.removeEventListener("touchstart", this.__onStart, { passive: true });
   }
 
   /**
@@ -330,9 +370,9 @@ export class DwIconButton extends buttonFocus(LitElement) {
    * @private
    */
   __bindInactiveEvents() {
-    this.addEventListener('mouseup', this.__fadeOut, {passive: true});
-    this.addEventListener('mouseleave', this.__fadeOut, {passive: true});
-    this.addEventListener('touchend', this.__fadeOut, {passive: true});
+    this.addEventListener("mouseup", this.__fadeOut, { passive: true });
+    this.addEventListener("mouseleave", this.__fadeOut, { passive: true });
+    this.addEventListener("touchend", this.__fadeOut, { passive: true });
   }
 
   /**
@@ -340,9 +380,9 @@ export class DwIconButton extends buttonFocus(LitElement) {
    * @private
    */
   __unbindInactiveEvents() {
-    this.removeEventListener('mouseup', this.__fadeOut, {passive: true});
-    this.removeEventListener('mouseleave', this.__fadeOut, {passive: true});
-    this.removeEventListener('touchend', this.__fadeOut , {passive: true});
+    this.removeEventListener("mouseup", this.__fadeOut, { passive: true });
+    this.removeEventListener("mouseleave", this.__fadeOut, { passive: true });
+    this.removeEventListener("touchend", this.__fadeOut, { passive: true });
   }
 
   /**
@@ -352,10 +392,12 @@ export class DwIconButton extends buttonFocus(LitElement) {
    */
   __onStart() {
     let resolve;
-    let promise = new Promise((res) => { resolve = res });
+    let promise = new Promise((res) => {
+      resolve = res;
+    });
     this.waitForEntryAnimation = promise;
     window.requestAnimationFrame(() => {
-      this.classList.add('ripple-entry');
+      this.classList.add("ripple-entry");
       window.setTimeout(() => {
         resolve();
       }, 225);
@@ -367,7 +409,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
    * @protected
    */
   __hasRippleEntry() {
-    return this.classList && this.classList.contains && this.classList.contains('ripple-entry');
+    return this.classList && this.classList.contains && this.classList.contains("ripple-entry");
   }
 
   /**
@@ -376,19 +418,27 @@ export class DwIconButton extends buttonFocus(LitElement) {
    * @private
    */
   async __fadeOut() {
-    if(!this.__hasRippleEntry()) {
+    if (!this.__hasRippleEntry()) {
       return;
     }
     await this.waitForEntryAnimation;
     window.requestAnimationFrame(() => {
-      this.classList.add('ripple-exit');
-      window.setTimeout(()=> {
-        this.classList.remove('ripple-entry');
-        this.classList.remove('ripple-exit');
-        this.__button && this.__button.blur();
+      this.classList.add("ripple-exit");
+      window.setTimeout(() => {
+        this.classList.remove("ripple-entry");
+        this.classList.remove("ripple-exit");
+        // this.__button && this.__button.blur();
       }, 250);
     });
   }
+
+  _onMouseDown() {
+    this._noFocusEffect = true;
+  }
+
+  _onBlur() {
+    this._noFocusEffect = false;
+  }
 }
 
-customElements.define('dw-icon-button', DwIconButton);
+customElements.define("dw-icon-button", DwIconButton);
