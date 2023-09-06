@@ -251,7 +251,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
     this.__bindActiveEvents();
     this.__bindInactiveEvents();
 
-    this.addEventListener("mousedown", this._onMouseDown);
+    this.addEventListener("pointerdown", this._onMouseDown);
     this.addEventListener("blur", this._onBlur);
   }
 
@@ -260,7 +260,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
     this.__unbindInactiveEvents();
     super.disconnectedCallback && super.disconnectedCallback();
 
-    this.removeEventListener("mousedown", this._onMouseDown);
+    this.removeEventListener("pointerdown", this._onMouseDown);
     this.removeEventListener("blur", this._onBlur);
   }
 
