@@ -441,7 +441,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
   }
 
   focus() {
-    this.renderRoot.querySelector('button').focus();
+    this.renderRoot.querySelector('button')?.focus();
   }
 }
 
