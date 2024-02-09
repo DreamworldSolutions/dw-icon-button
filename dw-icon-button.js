@@ -439,6 +439,10 @@ export class DwIconButton extends buttonFocus(LitElement) {
   _onBlur() {
     this._noFocusEffect = false;
   }
+
+  focus() {
+    this.renderRoot.querySelector('button').focus();
+  }
 }
 
 customElements.define("dw-icon-button", DwIconButton);
