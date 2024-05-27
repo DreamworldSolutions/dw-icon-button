@@ -205,6 +205,11 @@ export class DwIconButton extends buttonFocus(LitElement) {
       disabledTitle: { type: String },
 
       /**
+       * An object that contains extra options for the tip feature.
+       */
+      tipExtraOptions: { type: Object },
+
+      /**
        * Input property
        * Type of the icon. By default it shows FILLED icon.
        * Possible values: FILLED and OUTLINED
@@ -301,7 +306,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
                 .trigger=${"mouseenter"}
                 .forEl=${this}
                 .offset=${[0, 8]}
-                .extraOptions=${{ delay: [500, 0] }}
+                .extraOptions=${{ ...{ delay: [500, 0] }, ...this.tipExtraOptions, maxWidth: 'none' }}
                 .content=${this.title}
                 .placement=${this.placement}
               >
