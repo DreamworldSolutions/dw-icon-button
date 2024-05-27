@@ -306,7 +306,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
                 .trigger=${"mouseenter"}
                 .forEl=${this}
                 .offset=${[0, 8]}
-                .extraOptions=${{ ...{ delay: [500, 0] }, ...this.tipExtraOptions, maxWidth: 'none' }}
+                .extraOptions=${{ ...{ delay: [500, 0] }, ...this.tipExtraOptions }}
                 .content=${this.title}
                 .placement=${this.placement}
               >
@@ -350,6 +350,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
     this.disabled = false;
     this._touchDevice = isTouchDevice();
     this._noFocusEffect = false;
+    this.tipExtraOptions = {};
   }
 
   /**
