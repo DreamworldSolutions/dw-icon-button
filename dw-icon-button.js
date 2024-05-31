@@ -16,6 +16,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
         :host {
           display: block;
           outline: none;
+          -webkit-tap-highlight-color: transparent;
         }
 
         :host([hidden]) {
