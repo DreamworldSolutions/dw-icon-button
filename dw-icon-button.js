@@ -397,7 +397,8 @@ export class DwIconButton extends buttonFocus(LitElement) {
    * Active a ripple animation.
    * @private
    */
-  __onStart() {
+  __onStart(e) {
+    e && e.stopPropagation();
     let resolve;
     let promise = new Promise((res) => {
       resolve = res;
