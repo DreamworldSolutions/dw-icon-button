@@ -45,7 +45,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
           position: relative;
           width: 100%;
           height: 100%;
-          background: transparent;
+          background: var(--dw-icon-button-background, transparent);
           border: none;
           outline: none;
           cursor: pointer;
