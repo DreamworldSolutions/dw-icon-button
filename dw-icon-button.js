@@ -211,6 +211,14 @@ export class DwIconButton extends buttonFocus(LitElement) {
       tipExtraOptions: { type: Object },
 
       /**
+       * Input property.
+       * Displacement of the tip from its reference element.
+       * It's an array of two numbers in the form `[skidding, distance]`.
+       * Default value - `[0, 8]`
+       */
+      tipOffset: { type: Array },
+
+      /**
        * Input property
        * Type of the icon. By default it shows FILLED icon.
        * Possible values: FILLED and OUTLINED
@@ -291,7 +299,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
           ? html`<dw-tooltip
               .trigger=${"mouseenter"}
               .for=${"wrapper"}
-              .offset=${[0, 8]}
+              .offset=${this.tipOffset}
               .extraOptions=${{ delay: [500, 0] }}
               .content=${this.disabledTitle}
               .placement=${this.placement}
@@ -306,7 +314,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
               <dw-tooltip
                 .trigger=${"mouseenter"}
                 .forEl=${this}
-                .offset=${[0, 8]}
+                .offset=${this.tipOffset}
                 .extraOptions=${{ ...{ delay: [500, 0] }, ...this.tipExtraOptions }}
                 .content=${this.title}
                 .placement=${this.placement}
@@ -352,6 +360,7 @@ export class DwIconButton extends buttonFocus(LitElement) {
     this._touchDevice = isTouchDevice();
     this._noFocusEffect = false;
     this.tipExtraOptions = {};
+    this.tipOffset = [0, 8];
   }
 
   /**

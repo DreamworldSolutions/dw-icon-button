@@ -68,6 +68,7 @@ The component renders icons using icon font classes. Include the relevant font s
 | `title` | `title` | `String` | — | No | Tooltip text. Shown on `mouseenter` when the button is **not** disabled and **not** on a touch device |
 | `disabledTitle` | `disabled-title` | `String` | — | No | Tooltip text. Shown on `mouseenter` only when `disabled` is `true` |
 | `tipExtraOptions` | — | `Object` | `{}` | No | Additional options object merged into `dw-tooltip`'s `extraOptions` for the `title` tooltip |
+| `tipOffset` | — | `Array` | `[0, 8]` | No | Displacement of the tooltip from the button as `[skidding, distance]`. Applied to both the `title` and `disabledTitle` tooltips |
 | `iconFont` | `icon-font` | `String` | — | Yes | Icon font variant. Accepted values: `FILLED`, `OUTLINED` |
 | `symbol` | `symbol` | `Boolean` | `false` | Yes | When `true`, renders using the Material Symbols font instead of Material Icons |
 | `placement` | `placement` | `String` | `'top'` | No | Tooltip position relative to the button. Accepts: `top`, `bottom`, `left`, `right`, with optional `-start` or `-end` suffix (e.g. `top-start`, `left-end`) |
@@ -175,6 +176,16 @@ To use `buttonSize` for self-contained sizing with automatic padding:
   icon="info"
   .title=${"Help"}
   .tipExtraOptions=${{ delay: [200, 0] }}
+></dw-icon-button>
+```
+
+#### Custom tooltip offset via `tipOffset`
+
+```html
+<dw-icon-button
+  icon="info"
+  .title=${"Help"}
+  .tipOffset=${[0, 12]}
 ></dw-icon-button>
 ```
 
