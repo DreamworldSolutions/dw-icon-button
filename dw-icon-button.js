@@ -33,10 +33,6 @@ export class DwIconButton extends buttonFocus(LitElement) {
           --dw-icon-color-active: var(--mdc-theme-secondary);
         }
 
-        button:focus dw-icon {
-          --dw-icon-color: var(--dw-icon-color-active, rgba(0, 0, 0, 0.87));
-        }
-
         :host([disabled]) button {
           cursor: default;
         }
