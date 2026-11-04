@@ -1,6 +1,6 @@
-import { css, html } from 'lit-element';
+import { css, html } from 'lit';
 import { LitElement } from '@dreamworld/pwa-helpers/lit-element.js';
-import { styleMap } from 'lit-html/directives/style-map.js';
+import { styleMap } from 'lit/directives/style-map.js';
 
 //These are the dw element needed by this elemenet
 import '@dreamworld/dw-icon/dw-icon.js';
@@ -11,6 +11,7 @@ import { buttonFocus } from '@dreamworld/pwa-helpers';
 import { flexLayout } from '@dreamworld/flex-layout/flex-layout.js';
 import { alignment } from '@dreamworld/flex-layout/flex-layout-alignment.js';
 import '@dreamworld/dw-tooltip/dw-tooltip';
+import * as typographyLiterals from '@dreamworld/material-styles/typography-literals';
 
 export class DwIconButton extends buttonFocus(LitElement) {
   static get styles() {
@@ -49,7 +50,17 @@ export class DwIconButton extends buttonFocus(LitElement) {
           cursor: default;
         }
 
+        .prefix {
+          padding-right: 4px;
+          color: var(--dw-icon-button-prefix-color, var(--secondary-text-color));
+          ${typographyLiterals.body2};
+        }
+
         button {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
           position: relative;
           width: 100%;
           height: 100%;
@@ -61,6 +72,12 @@ export class DwIconButton extends buttonFocus(LitElement) {
           margin: 0px;
           overflow: hidden;
           border-radius: 50%;
+        }
+
+        :host([has-prefix]) button {
+          flex-direction: row;
+          width: auto !important;
+          border-radius: 4px;
         }
 
         button::before  {
@@ -99,6 +116,10 @@ export class DwIconButton extends buttonFocus(LitElement) {
           background-color: var(--mdc-theme-on-surface);
           opacity: 0;
           border-radius: 50%;
+        }
+
+        :host([has-prefix]) button::after {
+          border-radius: 4px;
         }
 
         @keyframes scale-in-ripple {
@@ -148,6 +169,16 @@ export class DwIconButton extends buttonFocus(LitElement) {
        * name of icon
        */
       icon: { type: String },
+
+      /**
+       * Prefix text.
+       */
+      prefix: { type: String },
+
+      /**
+       * has prefix text or not.
+       */
+      hasPrefix: { type: Boolean, reflect: true, attribute: 'has-prefix'},
 
       /**
        * `true` if icon needs to be show as a disabled
@@ -215,8 +246,8 @@ export class DwIconButton extends buttonFocus(LitElement) {
   render() {
     return html`
       <button style=${this._buttonStyle()} 
-        tabindex="${this.disabled ? -1 : ''}" 
-        class="center-center layout vertical">
+        tabindex="${this.disabled ? -1 : ''}">
+        ${this.hasPrefix && this.prefix ? html`<div class="prefix">${this.prefix}</div>`: ''}
         <dw-icon 
           .name="${this.icon}" 
           .size=${this.iconSize} 

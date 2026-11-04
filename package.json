@@ -7,13 +7,13 @@
     "@dreamworld/dw-icon": "^2.2.1",
     "@dreamworld/dw-tooltip": "^2.1.1",
     "@dreamworld/flex-layout": "^1.0.0",
-    "@dreamworld/pwa-helpers": "^1.8.0",
+    "@dreamworld/material-styles": "^3.2.4",
+    "@dreamworld/pwa-helpers": "^3.0.2",
     "@dreamworld/web-util": "^1.2.0",
-    "@material/mwc-base": "0.20.0",
-    "lit-element": "^2.2.0"
+    "@material/mwc-base": "0.27.0",
+    "lit": "^3.3.0"
   },
   "devDependencies": {
-    "@dreamworld/material-styles": "^1.1.0",
     "@material/mwc-formfield": "0.20.0",
     "@material/mwc-switch": "0.20.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
